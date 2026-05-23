@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Studio — Diseño & Desarrollo</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- HERO -->
+  <header class="hero">
+    <nav class="nav">
+      <span class="logo">Studio</span>
+      <a href="#contacto" class="nav-cta">Contactar</a>
+    </nav>
+    <div class="hero-content">
+      <h1 class="hero-title">Creamos experiencias<br>digitales que destacan</h1>
+      <p class="hero-subtitle">Diseño estratégico y desarrollo web para marcas que quieren crecer en internet.</p>
+      <a href="#contacto" class="btn-primary">Hablemos de tu proyecto</a>
+    </div>
+  </header>
+
+  <!-- SERVICIOS -->
+  <section class="services" id="servicios">
+    <p class="section-label">Lo que hacemos</p>
+    <h2 class="section-title">Nuestros servicios</h2>
+    <div class="cards">
+
+      <div class="card">
+        <div class="card-icon">✦</div>
+        <h3>Diseño UI/UX</h3>
+        <p>Interfaces limpias y funcionales centradas en el usuario. Cada píxel tiene un propósito.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">⬡</div>
+        <h3>Desarrollo Web</h3>
+        <p>Sitios rápidos, accesibles y optimizados para buscadores. Código limpio, resultados reales.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">◈</div>
+        <h3>Estrategia Digital</h3>
+        <p>Análisis, posicionamiento y crecimiento. Ayudamos a tu marca a encontrar su lugar en la red.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="contact" id="contacto">
+    <div class="contact-inner">
+      <h2>¿Tienes un proyecto en mente?</h2>
+      <p>Cuéntanos qué necesitas y te respondemos en menos de 24 horas.</p>
+      <form class="contact-form" id="contactForm" novalidate>
+        <div class="form-row">
+          <input type="text" id="name" placeholder="Tu nombre" required />
+          <input type="email" id="email" placeholder="Tu email" required />
+        </div>
+        <textarea id="message" placeholder="Cuéntanos tu idea..." rows="4" required></textarea>
+        <button type="submit" class="btn-primary">Enviar mensaje</button>
+        <p class="form-feedback" id="formFeedback" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <span class="logo">Studio</span>
+    <p>© 2026 Studio. Todos los derechos reservados.</p>
+    <div class="footer-links">
+      <a href="#servicios">Servicios</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
