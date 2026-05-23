@@ -16,18 +16,18 @@
       theme: {
         extend: {
           colors: {
-            base: "#f6f1ea", ink: "#3b2f2a", inkSoft: "#6b5b53",
-            cta: "#f3e7db", ctaHover: "#ead8c7", borderSoft: "#e5d7ca",
-            choco: "#2b1f1a", caramel: "#b08a6a",
+            base:"#f6f1ea", ink:"#3b2f2a", inkSoft:"#6b5b53",
+            cta:"#f3e7db", ctaHover:"#ead8c7", borderSoft:"#e5d7ca",
+            choco:"#2b1f1a", caramel:"#b08a6a",
           },
           boxShadow: {
-            soft: "0 10px 30px rgba(43,31,26,.12)",
-            cta:  "0 12px 30px rgba(176,138,106,.35)"
+            soft:"0 10px 30px rgba(43,31,26,.12)",
+            cta:"0 12px 30px rgba(176,138,106,.35)"
           },
           keyframes: {
-            pulseCTA: {
-              "0%,100%": { transform:"scale(1)",    boxShadow:"0 0 0 rgba(0,0,0,0)" },
-              "50%":      { transform:"scale(1.05)", boxShadow:"0 0 30px rgba(243,231,219,0.95)" },
+            pulseCTA:{
+              "0%,100%":{transform:"scale(1)",    boxShadow:"0 0 0 rgba(0,0,0,0)"},
+              "50%":    {transform:"scale(1.05)", boxShadow:"0 0 30px rgba(243,231,219,0.95)"},
             },
           },
         }
@@ -36,31 +36,36 @@
   </script>
 
   <style>
-    body { background-color:#2b1f1a !important; }
+    body{background-color:#2b1f1a !important;}
 
-    .form-wrap   { height:100%;overflow:hidden;border-radius:1rem;border:1px solid #e5d7ca;background:#fff;position:relative; }
-    .form-loader { position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:10px;
-                   font-family:Inter,sans-serif;color:#6b5b53;background:#fff;z-index:2; }
-    .dot { width:8px;height:8px;border-radius:999px;background:#b08a6a;animation:bounce 1s infinite ease-in-out; }
-    .dot:nth-child(2){ animation-delay:.15s; }
-    .dot:nth-child(3){ animation-delay:.3s; }
-    @keyframes bounce{ 0%,80%,100%{transform:translateY(0);opacity:.6} 40%{transform:translateY(-6px);opacity:1} }
-    .form-ready .form-loader { display:none; }
-    .form-inner  { position:relative;z-index:1;height:100%;width:100%;overflow:hidden;padding:8px; }
-    .systeme-iframe { width:100%;height:100%;border:0;display:block;border-radius:.75rem;background:#fff; }
+    /* modal */
+    .form-wrap  {height:100%;overflow:hidden;border-radius:1rem;border:1px solid #e5d7ca;background:#fff;position:relative;}
+    .form-loader{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:10px;
+                 font-family:Inter,sans-serif;color:#6b5b53;background:#fff;z-index:2;}
+    .dot{width:8px;height:8px;border-radius:999px;background:#b08a6a;animation:bounce 1s infinite ease-in-out;}
+    .dot:nth-child(2){animation-delay:.15s;} .dot:nth-child(3){animation-delay:.3s;}
+    @keyframes bounce{0%,80%,100%{transform:translateY(0);opacity:.6}40%{transform:translateY(-6px);opacity:1}}
+    .form-ready .form-loader{display:none;}
+    .form-inner{position:relative;z-index:1;height:100%;width:100%;overflow:hidden;padding:8px;}
+    .systeme-iframe{width:100%;height:100%;border:0;display:block;border-radius:.75rem;background:#fff;}
 
-    @keyframes fadeIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
-    .animate-fadeIn { animation:fadeIn .3s ease-out; }
+    @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+    .animate-fadeIn{animation:fadeIn .3s ease-out;}
 
-    .glow-title {
-      text-shadow: 0 0 5px rgba(216,191,163,.7), 0 0 12px rgba(216,191,163,.5), 0 4px 10px rgba(0,0,0,.75);
+    .glow-title{text-shadow:0 0 5px rgba(216,191,163,.7),0 0 12px rgba(216,191,163,.5),0 4px 10px rgba(0,0,0,.75);}
+
+    /* galería */
+    .gallery-img{
+      width:100%; height:100%;
+      object-fit:cover; object-position:center;
+      display:block; border-radius:.75rem;
     }
   </style>
 </head>
 
 <body class="bg-base text-ink font-[Inter]">
 
-<!-- ===== BANNER SCROLL ===== -->
+<!-- ===== BANNER ===== -->
 <section id="top-banner"
   class="fixed top-0 w-full z-30 bg-[#2b1f1a] text-white
          transition-all duration-300 ease-out -translate-y-full opacity-0">
@@ -72,36 +77,36 @@
           <span class="font-semibold">10, 11 Y 12 DE MARZO</span>
         </strong>
       </div>
-      <div class="hidden md:block absolute right-1 -translate-x-1/2
-                  text-lg text-[#d8bfa3] font-['Playfair_Display'] tracking-wide">
+      <div class="hidden md:block absolute right-1 -translate-x-1/2 text-lg text-[#d8bfa3] font-['Playfair_Display'] tracking-wide">
         PACO PAQUILLO &amp; AGUSTINO LANGOSTINO ACADEMY
       </div>
     </div>
   </div>
 </section>
 <script>
-  const banner = document.getElementById('top-banner');
-  function toggleBanner(){
-    if(window.scrollY > window.innerHeight*.5){
+  const banner=document.getElementById('top-banner');
+  function tb(){
+    if(window.scrollY>window.innerHeight*.5){
       banner.classList.remove('-translate-y-full','opacity-0');
       banner.classList.add('translate-y-0','opacity-100');
-    } else {
+    }else{
       banner.classList.add('-translate-y-full','opacity-0');
       banner.classList.remove('translate-y-0','opacity-100');
     }
   }
-  window.addEventListener('scroll',toggleBanner); toggleBanner();
+  window.addEventListener('scroll',tb);tb();
 </script>
 
 
 <!-- ===== HERO ===== -->
 <section class="relative overflow-hidden bg-[#2b1f1a] text-white min-h-screen flex items-center">
 
-  <div class="absolute inset-0 overflow-hidden opacity-40">
-    <img src="IMG_1704.jpeg" alt="Paco y Agustino en plena sesión estratégica"
-         class="w-full h-full object-cover object-top" />
+  <!-- foto de fondo: los dos gritando en el árbol -->
+  <div class="absolute inset-0">
+    <img src="IMG_1704.jpeg" alt=""
+         class="w-full h-full object-cover object-[center_30%]" />
+    <div class="absolute inset-0 bg-[#1c1411]/72"></div>
   </div>
-  <div class="absolute inset-0 bg-[#1c1411]/70"></div>
 
   <div class="relative max-w-7xl mx-auto px-6 pt-8 pb-20 z-10 w-full">
     <div class="flex flex-col items-center text-center">
@@ -120,10 +125,10 @@
       </h1>
 
       <p class="mt-6 text-[13px] sm:text-[14px] leading-relaxed text-white max-w-[850px] mx-auto font-medium">
-        Para felinos que saben que pueden estar en otro nivel y quieren construir una carrera profesional estable
-        a base de ronroneos estratégicos, arañazos con criterio y miradas de desprecio bien ejecutadas.
+        Para felinos que saben que pueden estar en otro nivel y quieren construir
+        una carrera profesional estable a base de ronroneos estratégicos,
+        arañazos con criterio y miradas de desprecio bien ejecutadas.
       </p>
-
       <p class="mt-4 text-[14px] sm:text-[15px] leading-relaxed text-white max-w-[800px] mx-auto font-bold">
         Sin necesidad de más energía, más motivación ni el momento ideal para salir de la siesta.
       </p>
@@ -139,25 +144,23 @@
       <p class="font-['Cinzel'] text-[#d8bfa3] text-sm sm:text-base font-semibold tracking-widest pt-4">
         TALLER ONLINE FELINO | 10, 11 Y 12 DE MARZO
       </p>
-
     </div>
   </div>
 </section>
 
 
 <!-- ===== TRANSICIÓN ===== -->
-<section class="relative min-h-[130px] sm:min-h-[260px] overflow-hidden bg-[#2b1f1a]">
+<section class="relative h-48 sm:h-72 overflow-hidden bg-[#2b1f1a]">
   <img src="IMG_1707.jpeg" alt="Durmiendo juntos tras una dura jornada de no hacer nada"
-       class="absolute inset-0 w-full h-full object-cover" />
-  <div class="absolute inset-0 bg-[#2b1f1a]/85 backdrop-blur-[1px]"></div>
-  <div class="absolute bottom-0 inset-x-0 h-16 bg-gradient-to-t from-[#2b1f1a] to-transparent"></div>
+       class="absolute inset-0 w-full h-full object-cover object-[center_40%]" />
+  <div class="absolute inset-0 bg-[#2b1f1a]/80"></div>
+  <div class="absolute bottom-0 inset-x-0 h-20 bg-gradient-to-t from-[#2b1f1a] to-transparent"></div>
 </section>
 
 
 <!-- ===== BENEFICIOS ===== -->
 <section class="text-white sm:pt-14" style="margin-top:-80px;z-index:10;position:relative;">
   <div class="max-w-6xl mx-auto px-5 sm:px-6">
-
     <h2 class="uppercase tracking-wider font-['Playfair_Display'] text-[#d8bfa3] text-center
                text-2xl sm:text-4xl leading-tight font-semibold">
       <b>Por qué este taller puede desbloquear tu verdadero potencial gatuno:</b>
@@ -168,12 +171,9 @@
         <div class="space-y-4">
 
           <!-- 1 -->
-          <div class="bg-[#f6f1ea] rounded-2xl border border-[#e5d7ca] p-5 sm:p-6
-                      shadow-[0_10px_30px_rgba(0,0,0,0.10)]
-                      transition hover:-translate-y-0.5 hover:shadow-[0_16px_40px_rgba(0,0,0,0.14)]">
+          <div class="bg-[#f6f1ea] rounded-2xl border border-[#e5d7ca] p-5 sm:p-6 shadow-[0_10px_30px_rgba(0,0,0,0.10)] transition hover:-translate-y-0.5">
             <div class="flex gap-4 items-start">
-              <span class="mt-1 inline-flex h-8 w-8 shrink-0 items-center justify-center
-                           rounded-full bg-[#2b1f1a] text-[#d8bfa3] font-bold">🐾</span>
+              <span class="mt-1 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#2b1f1a] text-[#d8bfa3] font-bold">🐾</span>
               <div>
                 <p class="text-[#2b1f1a] font-semibold text-[16px] sm:text-[18px] leading-snug">
                   La mentalidad gatuna que te hace dueño del piso (aunque en el catastro figure otro)
@@ -187,12 +187,9 @@
           </div>
 
           <!-- 2 -->
-          <div class="bg-[#f6f1ea] rounded-2xl border border-[#e5d7ca] p-5 sm:p-6
-                      shadow-[0_10px_30px_rgba(0,0,0,0.10)]
-                      transition hover:-translate-y-0.5 hover:shadow-[0_16px_40px_rgba(0,0,0,0.14)]">
+          <div class="bg-[#f6f1ea] rounded-2xl border border-[#e5d7ca] p-5 sm:p-6 shadow-[0_10px_30px_rgba(0,0,0,0.10)] transition hover:-translate-y-0.5">
             <div class="flex gap-4 items-start">
-              <span class="mt-1 inline-flex h-8 w-8 shrink-0 items-center justify-center
-                           rounded-full bg-[#2b1f1a] text-[#d8bfa3] font-bold">🐾</span>
+              <span class="mt-1 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#2b1f1a] text-[#d8bfa3] font-bold">🐾</span>
               <div>
                 <p class="text-[#2b1f1a] font-semibold text-[16px] sm:text-[18px] leading-snug">
                   El error silencioso que te mantiene siendo una mascota (aunque ya tengas dueño)
@@ -206,12 +203,9 @@
           </div>
 
           <!-- 3 -->
-          <div class="bg-[#f6f1ea] rounded-2xl border border-[#e5d7ca] p-5 sm:p-6
-                      shadow-[0_10px_30px_rgba(0,0,0,0.10)]
-                      transition hover:-translate-y-0.5 hover:shadow-[0_16px_40px_rgba(0,0,0,0.14)]">
+          <div class="bg-[#f6f1ea] rounded-2xl border border-[#e5d7ca] p-5 sm:p-6 shadow-[0_10px_30px_rgba(0,0,0,0.10)] transition hover:-translate-y-0.5">
             <div class="flex gap-4 items-start">
-              <span class="mt-1 inline-flex h-8 w-8 shrink-0 items-center justify-center
-                           rounded-full bg-[#2b1f1a] text-[#d8bfa3] font-bold">🐾</span>
+              <span class="mt-1 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#2b1f1a] text-[#d8bfa3] font-bold">🐾</span>
               <div>
                 <p class="text-[#2b1f1a] font-semibold text-[16px] sm:text-[18px] leading-snug">
                   Cómo cobrar en latas, exigir rascados premium y poner precios con dignidad
@@ -225,12 +219,9 @@
           </div>
 
           <!-- 4 -->
-          <div class="bg-[#f6f1ea] rounded-2xl border border-[#e5d7ca] p-5 sm:p-6
-                      shadow-[0_10px_30px_rgba(0,0,0,0.10)]
-                      transition hover:-translate-y-0.5 hover:shadow-[0_16px_40px_rgba(0,0,0,0.14)]">
+          <div class="bg-[#f6f1ea] rounded-2xl border border-[#e5d7ca] p-5 sm:p-6 shadow-[0_10px_30px_rgba(0,0,0,0.10)] transition hover:-translate-y-0.5">
             <div class="flex gap-4 items-start">
-              <span class="mt-1 inline-flex h-8 w-8 shrink-0 items-center justify-center
-                           rounded-full bg-[#2b1f1a] text-[#d8bfa3] font-bold">🐾</span>
+              <span class="mt-1 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#2b1f1a] text-[#d8bfa3] font-bold">🐾</span>
               <div>
                 <p class="text-[#2b1f1a] font-semibold text-[16px] sm:text-[18px] leading-snug">
                   La técnica del zarpazo perfecto: limpio, preciso y con personalidad propia
@@ -244,12 +235,9 @@
           </div>
 
           <!-- 5 -->
-          <div class="bg-[#f6f1ea] rounded-2xl border border-[#e5d7ca] p-5 sm:p-6
-                      shadow-[0_10px_30px_rgba(0,0,0,0.10)]
-                      transition hover:-translate-y-0.5 hover:shadow-[0_16px_40px_rgba(0,0,0,0.14)]">
+          <div class="bg-[#f6f1ea] rounded-2xl border border-[#e5d7ca] p-5 sm:p-6 shadow-[0_10px_30px_rgba(0,0,0,0.10)] transition hover:-translate-y-0.5">
             <div class="flex gap-4 items-start">
-              <span class="mt-1 inline-flex h-8 w-8 shrink-0 items-center justify-center
-                           rounded-full bg-[#2b1f1a] text-[#d8bfa3] font-bold">🐾</span>
+              <span class="mt-1 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#2b1f1a] text-[#d8bfa3] font-bold">🐾</span>
               <div>
                 <p class="text-[#2b1f1a] font-semibold text-[16px] sm:text-[18px] leading-snug">
                   El método para dormir 16h al día, gritar a las 4am y llamarlo productividad
@@ -287,13 +275,74 @@
 </section>
 
 
+<!-- ===== GALERÍA "EL MÉTODO EN IMÁGENES" ===== -->
+<section class="py-20 sm:py-24 bg-[#2b1f1a]">
+  <div class="max-w-6xl mx-auto px-6">
+
+    <h2 class="font-['Playfair_Display'] text-[#d8bfa3] text-center text-2xl sm:text-3xl font-semibold mb-3">
+      El método, documentado
+    </h2>
+    <p class="text-center text-white/70 text-sm sm:text-base mb-10">
+      Años de investigación en campo. Resultados verificables.
+    </p>
+
+    <!-- Grid 2x2 en escritorio, 1 col en móvil -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+
+      <!-- foto 1: los dos en silla de oficina mirando a cámara -->
+      <div class="relative overflow-hidden rounded-2xl bg-[#3a2a24]" style="height:320px;">
+        <img src="26c06df5-8911-46cb-a33b-b5d9df2db3d3.jpeg" alt="Foto oficial del equipo directivo"
+             class="gallery-img object-[center_20%]" />
+        <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-[#2b1f1a]/90 to-transparent px-5 py-4">
+          <p class="text-[#d8bfa3] font-semibold text-sm">📸 Foto oficial del equipo directivo</p>
+          <p class="text-white/70 text-xs mt-0.5">Agustino Langostino (izq.) · Paco Paquillo (dcha.)</p>
+        </div>
+      </div>
+
+      <!-- foto 2: Paco barriga arriba en el sofá -->
+      <div class="relative overflow-hidden rounded-2xl bg-[#3a2a24]" style="height:320px;">
+        <img src="8C76CD6B-E197-4B03-A810-2293F490E959.jpeg" alt="Fase 3 del método"
+             class="gallery-img object-center" />
+        <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-[#2b1f1a]/90 to-transparent px-5 py-4">
+          <p class="text-[#d8bfa3] font-semibold text-sm">💤 Fase 3: El descanso como estrategia de alto rendimiento</p>
+          <p class="text-white/70 text-xs mt-0.5">Paco Paquillo demostrando la técnica avanzada</p>
+        </div>
+      </div>
+
+      <!-- foto 3: Agustino mirando desde abajo + Paco volando en la cama -->
+      <div class="relative overflow-hidden rounded-2xl bg-[#3a2a24]" style="height:320px;">
+        <img src="IMG_1771.jpeg" alt="El sprint de las 4am"
+             class="gallery-img object-[center_30%]" />
+        <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-[#2b1f1a]/90 to-transparent px-5 py-4">
+          <p class="text-[#d8bfa3] font-semibold text-sm">🚀 Fase 2: El sprint matutino de las 4am. Sin excusas.</p>
+          <p class="text-white/70 text-xs mt-0.5">Paco en plena ejecución · Agustino coordinando desde tierra</p>
+        </div>
+      </div>
+
+      <!-- foto 4: Paco relajado en el taburete negro -->
+      <div class="relative overflow-hidden rounded-2xl bg-[#3a2a24]" style="height:320px;">
+        <img src="38e5746e-5b5d-472b-9467-66ce480329c3.jpeg" alt="Sesión de mentoría individual"
+             class="gallery-img object-center" />
+        <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-[#2b1f1a]/90 to-transparent px-5 py-4">
+          <p class="text-[#d8bfa3] font-semibold text-sm">🪑 Fase 1: Dominar el sofá antes de dominar el mercado</p>
+          <p class="text-white/70 text-xs mt-0.5">Paco Paquillo en sesión de mentoría individual</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
 <!-- ===== COMUNIDAD ===== -->
 <section class="relative overflow-hidden bg-[#2b1f1a] py-16 sm:py-20">
-  <img src="IMG_1762.jpeg" alt="Comunidad privada felina"
-       class="absolute inset-0 w-full h-full object-cover" />
-  <div class="absolute inset-0 bg-[#2b1f1a]/72"></div>
-  <div class="absolute top-0 inset-x-0 h-20 bg-gradient-to-b from-[#2b1f1a] to-transparent"></div>
-  <div class="absolute bottom-0 inset-x-0 h-20 bg-gradient-to-t from-[#2b1f1a] to-transparent"></div>
+  <div class="absolute inset-0">
+    <img src="IMG_1762.jpeg" alt="Comunidad privada felina"
+         class="w-full h-full object-cover object-[center_35%]" />
+    <div class="absolute inset-0 bg-[#2b1f1a]/72"></div>
+    <div class="absolute top-0 inset-x-0 h-20 bg-gradient-to-b from-[#2b1f1a] to-transparent"></div>
+    <div class="absolute bottom-0 inset-x-0 h-20 bg-gradient-to-t from-[#2b1f1a] to-transparent"></div>
+  </div>
 
   <div class="relative z-10 max-w-4xl mx-auto px-6 text-left sm:text-center text-white">
     <h2 class="text-2xl sm:text-3xl font-['Playfair_Display'] text-[#d8bfa3] mb-4">
@@ -327,35 +376,19 @@
         </p>
 
         <div class="mt-6 text-[14.5px] sm:text-[15.5px] leading-relaxed text-white/90 space-y-4">
-          <p>
-            Hemos formado a felinos por todo el territorio doméstico, colaboramos con marcas líderes
-            de pienso y co-dirigimos nuestro propio salón (el sofá) desde hace más de 7 años.
-          </p>
-          <p>
-            Agustino Langostino aporta la elegancia, el pelo blanco y esa capacidad innata
-            de mirar fijamente a la pared a las 3am sin dar explicaciones.
-          </p>
-          <p>
-            Paco Paquillo aporta la experiencia en campo: destrucción de mobiliario,
-            negociación con el humano y sprints explosivos a las 4am sin motivo aparente.
-          </p>
-          <p class="font-semibold text-white">
-            Hasta que entendimos algo: no era cuestión de arañar más.
-          </p>
-          <p class="font-semibold text-[#d8bfa3]">
-            Era cuestión de tener un método.
-          </p>
-          <p>
-            Creamos un sistema para ordenar nuestra técnica de maullido, nuestra mentalidad
-            y nuestro negocio de ignorar al humano. Dejamos de improvisar y construimos algo estable
-            (mientras dormimos 16 horas al día, con estructura).
-          </p>
-          <p class="font-semibold text-white">
-            Porque no necesitas más suerte.
-          </p>
-          <p class="font-semibold text-white">
-            Necesitas criterio, dirección y una caja de arena bien colocada.
-          </p>
+          <p>Hemos formado a felinos por todo el territorio doméstico, colaboramos con marcas líderes de pienso
+             y co-dirigimos nuestro propio salón (el sofá) desde hace más de 7 años.</p>
+          <p><strong class="text-white">Agustino Langostino</strong> aporta la elegancia, el pelo blanco y esa capacidad innata
+             de mirar fijamente a la pared a las 3am sin dar explicaciones.</p>
+          <p><strong class="text-white">Paco Paquillo</strong> aporta la experiencia en campo: destrucción de mobiliario,
+             negociación con el humano y sprints explosivos a las 4am sin motivo aparente.</p>
+          <p class="font-semibold text-white">Hasta que entendimos algo: no era cuestión de arañar más.</p>
+          <p class="font-semibold text-[#d8bfa3]">Era cuestión de tener un método.</p>
+          <p>Creamos un sistema para ordenar nuestra técnica de maullido, nuestra mentalidad
+             y nuestro negocio de ignorar al humano. Dejamos de improvisar y construimos algo estable
+             (mientras dormimos 16 horas al día, con estructura).</p>
+          <p class="font-semibold text-white">Porque no necesitas más suerte.</p>
+          <p class="font-semibold text-white">Necesitas criterio, dirección y una caja de arena bien colocada.</p>
         </div>
 
         <div class="mt-9 text-center md:text-left">
@@ -368,15 +401,31 @@
         </div>
       </div>
 
-      <!-- FOTO -->
-      <div class="mt-10 md:mt-0 md:w-1/2 flex md:block">
-        <div class="relative w-full max-w-sm md:max-w-md md:sticky md:top-24 md:ml-auto">
-          <img src="f5cdf58b-fa11-4b44-a404-2952d099c05e.jpeg"
-               alt="Paco Paquillo y Agustino Langostino"
-               class="rounded-2xl w-full object-cover shadow-soft md:h-[600px] lg:h-[660px]" />
-        </div>
-      </div>
+      <!-- FOTOS -->
+      <div class="mt-10 md:mt-0 md:w-1/2 md:sticky md:top-24">
 
+        <!-- retrato principal -->
+        <div class="overflow-hidden rounded-2xl shadow-soft" style="height:420px;">
+          <img src="26c06df5-8911-46cb-a33b-b5d9df2db3d3.jpeg"
+               alt="Paco Paquillo y Agustino Langostino — fundadores"
+               class="w-full h-full object-cover object-[center_15%]" />
+        </div>
+
+        <!-- dos fotos pequeñas debajo -->
+        <div class="grid grid-cols-2 gap-3 mt-3">
+          <div class="overflow-hidden rounded-xl" style="height:180px;">
+            <img src="CDC8AEDB-C300-496F-9120-9D03ED979202.jpeg"
+                 alt="Paco Paquillo"
+                 class="w-full h-full object-cover object-[center_30%]" />
+          </div>
+          <div class="overflow-hidden rounded-xl" style="height:180px;">
+            <img src="f5cdf58b-fa11-4b44-a404-2952d099c05e.jpeg"
+                 alt="Agustino Langostino y Paco Paquillo"
+                 class="w-full h-full object-cover object-center" />
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
 </section>
@@ -394,86 +443,70 @@
 
       <div class="border border-[#e5d7ca] rounded-xl overflow-hidden bg-white">
         <button type="button" class="faq-btn w-full flex justify-between items-center p-6 text-left font-semibold text-lg text-[#2b1f1a]">
-          ¿Cuándo es y a qué hora?
-          <span class="transition-transform duration-300">+</span>
+          ¿Cuándo es y a qué hora?<span class="transition-transform duration-300">+</span>
         </button>
         <div class="faq-content max-h-0 overflow-hidden transition-all duration-300">
-          <p class="p-6 pt-0 text-[#6b5b53]">
-            Recibirás todos los detalles al entrar en la comunidad privada de WhatsApp.
-            Allí tendrás los enlaces, recordatorios y acceso a todo el contenido.
-            Si eres gato, probablemente llegues 10 minutos tarde igualmente y lo ignores
-            hasta que te apetezca.
-          </p>
+          <p class="p-6 pt-0 text-[#6b5b53]">Recibirás todos los detalles al entrar en la comunidad privada de WhatsApp.
+          Allí tendrás los enlaces, recordatorios y acceso a todo el contenido.
+          Si eres gato, probablemente llegues 10 minutos tarde igualmente y lo ignores hasta que te apetezca.</p>
         </div>
       </div>
 
       <div class="border border-[#e5d7ca] rounded-xl overflow-hidden bg-white">
         <button type="button" class="faq-btn w-full flex justify-between items-center p-6 text-left font-semibold text-lg text-[#2b1f1a]">
-          ¿Es realmente gratuito?
-          <span class="transition-transform duration-300">+</span>
+          ¿Es realmente gratuito?<span class="transition-transform duration-300">+</span>
         </button>
         <div class="faq-content max-h-0 overflow-hidden transition-all duration-300">
-          <p class="p-6 pt-0 text-[#6b5b53]">
-            Sí. Es una formación sin coste porque queremos que entiendas el método antes de dar
-            cualquier paso más. Eso sí, una lata de atún al final siempre se agradece.
-          </p>
+          <p class="p-6 pt-0 text-[#6b5b53]">Sí. Es una formación sin coste porque queremos que entiendas el método
+          antes de dar cualquier paso más. Eso sí, una lata de atún al final siempre se agradece.</p>
         </div>
       </div>
 
       <div class="border border-[#e5d7ca] rounded-xl overflow-hidden bg-white">
         <button type="button" class="faq-btn w-full flex justify-between items-center p-6 text-left font-semibold text-lg text-[#2b1f1a]">
-          ¿Necesito tener mucha experiencia o un sofá propio?
-          <span class="transition-transform duration-300">+</span>
+          ¿Necesito tener mucha experiencia o un sofá propio?<span class="transition-transform duration-300">+</span>
         </button>
         <div class="faq-content max-h-0 overflow-hidden transition-all duration-300">
-          <p class="p-6 pt-0 text-[#6b5b53]">
-            No. Está pensado tanto para gatos que operan desde la cama como para felinos
-            que trabajan en domicilios ajenos o quieren elevar su nivel de indiferencia
-            y salir del estancamiento en la caja de arena.
-          </p>
+          <p class="p-6 pt-0 text-[#6b5b53]">No. Está pensado tanto para gatos que operan desde la cama como para felinos
+          que trabajan en domicilios ajenos o quieren elevar su nivel de indiferencia
+          y salir del estancamiento en la caja de arena.</p>
         </div>
       </div>
 
       <div class="border border-[#e5d7ca] rounded-xl overflow-hidden bg-white">
         <button type="button" class="faq-btn w-full flex justify-between items-center p-6 text-left font-semibold text-lg text-[#2b1f1a]">
-          ¿Y si ahora mismo no me siento preparado?
-          <span class="transition-transform duration-300">+</span>
+          ¿Y si ahora mismo no me siento preparado?<span class="transition-transform duration-300">+</span>
         </button>
         <div class="faq-content max-h-0 overflow-hidden transition-all duration-300">
-          <p class="p-6 pt-0 text-[#6b5b53]">
-            Precisamente por eso deberías estar dentro. El taller está diseñado para darte
-            claridad, estructura y seguridad, incluso si sientes que aún te falta nivel.
-            Recuerda: ningún gato se siente preparado. Simplemente lo hace y luego se lame.
-          </p>
+          <p class="p-6 pt-0 text-[#6b5b53]">Precisamente por eso deberías estar dentro. El taller está diseñado para darte
+          claridad, estructura y seguridad, incluso si sientes que aún te falta nivel.
+          Recuerda: ningún gato se siente preparado. Simplemente lo hace y luego se lame.</p>
         </div>
       </div>
 
       <div class="border border-[#e5d7ca] rounded-xl overflow-hidden bg-white">
         <button type="button" class="faq-btn w-full flex justify-between items-center p-6 text-left font-semibold text-lg text-[#2b1f1a]">
-          ¿Hay plazas limitadas?
-          <span class="transition-transform duration-300">+</span>
+          ¿Hay plazas limitadas?<span class="transition-transform duration-300">+</span>
         </button>
         <div class="faq-content max-h-0 overflow-hidden transition-all duration-300">
-          <p class="p-6 pt-0 text-[#6b5b53]">
-            Sí. El acceso es limitado para mantener un entorno cuidado y poder responder dudas.
-            Además, el servidor tiene capacidad para exactamente 9 vidas simultáneas.
-          </p>
+          <p class="p-6 pt-0 text-[#6b5b53]">Sí. El acceso es limitado para mantener un entorno cuidado y poder responder dudas.
+          Además, el servidor tiene capacidad para exactamente 9 vidas simultáneas.</p>
         </div>
       </div>
 
       <div class="border border-[#e5d7ca] rounded-xl overflow-hidden bg-white">
         <button type="button" class="faq-btn w-full flex justify-between items-center p-6 text-left font-semibold text-lg text-[#2b1f1a]">
-          ¿Pueden apuntarse perros?
-          <span class="transition-transform duration-300">+</span>
+          ¿Pueden apuntarse perros?<span class="transition-transform duration-300">+</span>
         </button>
         <div class="faq-content max-h-0 overflow-hidden transition-all duration-300">
           <div class="px-6 pb-6 flex flex-col sm:flex-row items-start gap-4">
             <img src="IMG_1688.jpeg" alt="Perro aspirante rechazado"
-                 class="w-28 sm:w-32 rounded-xl shrink-0 shadow" />
+                 class="w-28 sm:w-32 rounded-xl shrink-0 shadow object-cover object-center" style="height:128px;" />
             <p class="text-[#6b5b53] pt-1">
               No. Rotundamente no. Ni lo intentes.<br>
               <span class="text-xs italic text-[#b08a6a]">
-                Este en particular lo intentó. Sigue esperando respuesta desde marzo.
+                Este en particular lo intentó. Lleva desde marzo esperando respuesta.
+                Le dijimos que había lista de espera. No la hay.
               </span>
             </p>
           </div>
@@ -500,11 +533,9 @@
 
 
 <!-- ===== MODAL ===== -->
-<div id="modal"
-     class="fixed inset-0 z-40 hidden items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+<div id="modal" class="fixed inset-0 z-40 hidden items-center justify-center bg-black/60 backdrop-blur-sm p-4">
   <div class="relative bg-[#f6f1ea] rounded-2xl w-full max-w-3xl shadow-2xl animate-fadeIn
               h-[88vh] sm:h-[86vh] flex flex-col overflow-hidden border border-[#e5d7ca]">
-
     <div class="shrink-0 px-5 sm:px-6 py-4 border-b border-[#e5d7ca] flex items-center justify-between">
       <div>
         <h3 class="text-lg sm:text-xl font-semibold text-[#2b1f1a]">Reserva tu plaza felina 🐱</h3>
@@ -514,21 +545,15 @@
               class="h-10 w-10 rounded-full bg-white border border-[#e5d7ca] text-[#6b5b53]
                      hover:text-[#2b1f1a] hover:scale-105 transition flex items-center justify-center">✕</button>
     </div>
-
     <div class="flex-1 p-4 sm:p-6 overflow-hidden min-h-0">
       <div id="systemeFormContainer" class="form-wrap w-full h-full min-h-0">
-        <div class="form-loader">
-          <span>Cargando formulario</span>
-          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-        </div>
+        <div class="form-loader"><span>Cargando formulario</span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
         <div class="form-inner h-full">
-          <iframe id="systemeIframe" class="systeme-iframe"
-                  title="Formulario de registro felino"
+          <iframe id="systemeIframe" class="systeme-iframe" title="Formulario de registro felino"
                   loading="eager" src="about:blank" allowfullscreen></iframe>
         </div>
       </div>
     </div>
-
     <div class="shrink-0 px-6 py-4 text-center border-t border-[#e5d7ca] bg-[#f6f1ea]">
       <button type="button" id="openLegalBtn"
               class="text-sm text-[#2b1f1a] underline underline-offset-4 font-semibold hover:opacity-80 transition">
@@ -538,19 +563,13 @@
   </div>
 </div>
 
-<!-- OVERLAY -->
-<div id="offcanvas-overlay"
-     class="fixed inset-0 bg-black/40 z-[55] opacity-0 pointer-events-none transition-opacity duration-300"></div>
+<div id="offcanvas-overlay" class="fixed inset-0 bg-black/40 z-[55] opacity-0 pointer-events-none transition-opacity duration-300"></div>
 
-<!-- OFFCANVAS LEGAL -->
-<div id="offcanvas"
-     class="fixed bottom-0 left-0 w-full z-[60] bg-[#f6f1ea] rounded-t-3xl shadow-2xl
-            transform translate-y-full transition-transform duration-300 ease-out
-            max-h-[90vh] flex flex-col" aria-hidden="true">
+<div id="offcanvas" class="fixed bottom-0 left-0 w-full z-[60] bg-[#f6f1ea] rounded-t-3xl shadow-2xl
+     transform translate-y-full transition-transform duration-300 ease-out max-h-[90vh] flex flex-col" aria-hidden="true">
   <div class="p-4 border-b border-[#e5d7ca] text-center bg-[#f6f1ea] shrink-0">
     <div class="w-12 h-1.5 bg-[#d7c4b2] rounded-full mx-auto mb-3"></div>
-    <button type="button" id="closeOffcanvasTop"
-            class="px-6 py-3 bg-[#2b1f1a] text-white rounded-xl">Cerrar</button>
+    <button type="button" id="closeOffcanvasTop" class="px-6 py-3 bg-[#2b1f1a] text-white rounded-xl">Cerrar</button>
     <h3 class="text-lg font-semibold text-[#2b1f1a] mt-3">Términos y condiciones & Política de privacidad</h3>
   </div>
   <div id="legalScroll" class="p-6 text-[#2b1f1a] overflow-y-auto flex-1">
@@ -565,10 +584,9 @@
         <h2 class="text-xl font-extrabold text-[#b08a6a]">POLÍTICA DE PRIVACIDAD</h2>
         <p><b>Responsable:</b> IAR MANAGEMENT LLC<br>
            <b>Contacto:</b> <a href="mailto:imrepresent.co@gmail.com" class="underline font-semibold">imrepresent.co@gmail.com</a></p>
-        <p>Tratamos tus datos conforme al RGPD. Puedes ejercer tus derechos de acceso, rectificación y supresión contactando al correo indicado. Los gatos no reconocen la autoridad de la AEPD, pero nosotros sí.</p>
+        <p>Tratamos tus datos conforme al RGPD. Puedes ejercer tus derechos de acceso, rectificación y supresión contactando al correo indicado.</p>
       </section>
-      <button type="button" id="closeOffcanvasBottom"
-              class="mt-2 px-6 py-3 bg-[#2b1f1a] text-white rounded-xl w-full">Cerrar</button>
+      <button type="button" id="closeOffcanvasBottom" class="mt-2 px-6 py-3 bg-[#2b1f1a] text-white rounded-xl w-full">Cerrar</button>
     </div>
   </div>
 </div>
@@ -576,47 +594,30 @@
 
 <!-- ===== SCRIPTS ===== -->
 <script>
-  const SYSTEME_BASE_URL = "about:blank"; // ← pon aquí tu URL de systeme.io cuando la tengas
+  const SYSTEME_URL = "about:blank"; // ← reemplaza con tu URL de systeme.io
 
-  const modalEl               = document.getElementById('modal');
-  const closeModalBtn         = document.getElementById('closeModal');
-  const systemeFormContainer  = document.getElementById('systemeFormContainer');
-  const systemeIframe         = document.getElementById('systemeIframe');
-  const offcanvasEl           = document.getElementById('offcanvas');
-  const offcanvasOverlayEl    = document.getElementById('offcanvas-overlay');
-  const openLegalBtn          = document.getElementById('openLegalBtn');
-  const closeOffcanvasTop     = document.getElementById('closeOffcanvasTop');
-  const closeOffcanvasBottom  = document.getElementById('closeOffcanvasBottom');
+  const modalEl              = document.getElementById('modal');
+  const closeModalBtn        = document.getElementById('closeModal');
+  const formContainer        = document.getElementById('systemeFormContainer');
+  const iframe               = document.getElementById('systemeIframe');
+  const offcanvasEl          = document.getElementById('offcanvas');
+  const overlay              = document.getElementById('offcanvas-overlay');
+  const openLegalBtn         = document.getElementById('openLegalBtn');
+  const closeOffcanvasTop    = document.getElementById('closeOffcanvasTop');
+  const closeOffcanvasBottom = document.getElementById('closeOffcanvasBottom');
 
-  const isModalOpen    = () => modalEl    && !modalEl.classList.contains('hidden');
-  const isOffcanvasOpen = () => offcanvasEl && !offcanvasEl.classList.contains('translate-y-full');
+  const isModalOpen     = () => !modalEl.classList.contains('hidden');
+  const isOffcanvasOpen = () => !offcanvasEl.classList.contains('translate-y-full');
+  const syncLock        = () => document.body.classList.toggle('overflow-hidden', isModalOpen() || isOffcanvasOpen());
 
-  function syncLock(){
-    document.body.classList.toggle('overflow-hidden', isModalOpen() || isOffcanvasOpen());
-  }
-
-  function buildUrl(base){
-    if(base === 'about:blank') return base;
-    const cur = new URL(window.location.href), u = new URL(base);
-    ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','fbclid','gclid']
-      .forEach(k => { const v = cur.searchParams.get(k); if(v) u.searchParams.set(k,v); });
-    return u.toString();
-  }
-
-  const TARGET_URL = buildUrl(SYSTEME_BASE_URL);
-  let loadedOnce = false;
-
-  systemeIframe?.addEventListener('load', () => {
-    loadedOnce = true;
-    systemeFormContainer?.classList.add('form-ready');
-  });
+  let loaded = false;
+  iframe?.addEventListener('load', () => { loaded = true; formContainer?.classList.add('form-ready'); });
 
   function openModal(){
     modalEl.classList.remove('hidden'); modalEl.classList.add('flex');
-    systemeFormContainer?.classList.remove('form-ready');
-    if(systemeIframe && (systemeIframe.src === '' || systemeIframe.src === 'about:blank'))
-      systemeIframe.src = TARGET_URL;
-    if(loadedOnce) systemeFormContainer?.classList.add('form-ready');
+    formContainer?.classList.remove('form-ready');
+    if(iframe && (!iframe.src || iframe.src === 'about:blank' || iframe.src === location.href)) iframe.src = SYSTEME_URL;
+    if(loaded) formContainer?.classList.add('form-ready');
     syncLock();
   }
   function closeModal(){
@@ -626,23 +627,21 @@
   }
   function openOffcanvas(){
     offcanvasEl.classList.remove('translate-y-full');
-    offcanvasOverlayEl.classList.remove('opacity-0','pointer-events-none');
+    overlay.classList.remove('opacity-0','pointer-events-none');
     document.getElementById('legalScroll').scrollTop = 0;
     syncLock();
   }
   function closeOffcanvas(){
     offcanvasEl.classList.add('translate-y-full');
-    offcanvasOverlayEl.classList.add('opacity-0','pointer-events-none');
+    overlay.classList.add('opacity-0','pointer-events-none');
     syncLock();
   }
 
-  document.querySelectorAll('a[href="#registro"]')
-    .forEach(b => b.addEventListener('click', e => { e.preventDefault(); openModal(); }));
-
+  document.querySelectorAll('a[href="#registro"]').forEach(b => b.addEventListener('click', e => { e.preventDefault(); openModal(); }));
   closeModalBtn?.addEventListener('click', closeModal);
   modalEl?.addEventListener('click', e => { if(e.target === modalEl) closeModal(); });
   openLegalBtn?.addEventListener('click', openOffcanvas);
-  offcanvasOverlayEl?.addEventListener('click', closeOffcanvas);
+  overlay?.addEventListener('click', closeOffcanvas);
   closeOffcanvasTop?.addEventListener('click', closeOffcanvas);
   closeOffcanvasBottom?.addEventListener('click', closeOffcanvas);
   document.addEventListener('keydown', e => {
@@ -658,7 +657,6 @@
       const content = btn.closest('div.border').querySelector('.faq-content');
       const icon    = btn.querySelector('span');
       const isOpen  = content.classList.contains('open');
-
       document.querySelectorAll('.faq-content.open').forEach(o => {
         if(o !== content){
           o.classList.remove('open'); o.style.maxHeight = '0px';
@@ -666,14 +664,8 @@
           if(i) i.textContent = '+';
         }
       });
-
-      if(isOpen){
-        content.classList.remove('open'); content.style.maxHeight = '0px';
-        if(icon) icon.textContent = '+';
-      } else {
-        content.classList.add('open'); content.style.maxHeight = content.scrollHeight + 'px';
-        if(icon) icon.textContent = '–';
-      }
+      if(isOpen){ content.classList.remove('open'); content.style.maxHeight = '0px'; if(icon) icon.textContent = '+'; }
+      else       { content.classList.add('open');    content.style.maxHeight = content.scrollHeight+'px'; if(icon) icon.textContent = '–'; }
     });
   });
 </script>
