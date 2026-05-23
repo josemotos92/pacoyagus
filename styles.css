@@ -134,7 +134,7 @@ body {
   width: 4px;
   height: 18px;
   border-radius: 99px;
-  background: linear-gradient(to top, #a5b4fc, transparent);
+  background: linear-gradient(to top, #86efac, transparent);
   animation: steam 1.8s ease-in-out infinite;
   transform-origin: bottom center;
 }
@@ -150,8 +150,8 @@ body {
 .coffee-body {
   width: 72px;
   height: 58px;
-  background: #1e1e2e;
-  border: 2px solid #4f46e5;
+  background: #0f2010;
+  border: 2px solid #16a34a;
   border-radius: 4px 4px 18px 18px;
   overflow: hidden;
   position: relative;
@@ -163,7 +163,7 @@ body {
   left: 0;
   right: 0;
   height: 60%;
-  background: linear-gradient(to bottom, #6366f1, #4338ca);
+  background: linear-gradient(to bottom, #22c55e, #15803d);
   border-radius: 0 0 16px 16px;
   animation: liquid 3s ease-in-out infinite;
 }
@@ -179,7 +179,7 @@ body {
   top: 14px;
   width: 16px;
   height: 26px;
-  border: 2.5px solid #4f46e5;
+  border: 2.5px solid #16a34a;
   border-left: none;
   border-radius: 0 10px 10px 0;
 }
@@ -187,8 +187,8 @@ body {
 .coffee-saucer {
   width: 90px;
   height: 10px;
-  background: #1e1e2e;
-  border: 2px solid #4f46e5;
+  background: #0f2010;
+  border: 2px solid #16a34a;
   border-radius: 50%;
   margin-top: 4px;
   margin-left: -9px;
