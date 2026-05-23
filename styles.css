@@ -225,7 +225,7 @@ body {
 
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 1.5rem;
 }
 
@@ -351,6 +351,30 @@ body {
   border-radius: var(--radius);
   position: absolute;
   inset: 0;
+}
+
+.bio-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 1.1rem 1.25rem;
+  margin-bottom: 1rem;
+  border-left: 3px solid var(--accent);
+}
+
+.bio-name {
+  display: block;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--accent);
+  margin-bottom: 0.4rem;
+  letter-spacing: -0.01em;
+}
+
+.bio-card p {
+  font-size: 0.9rem;
+  color: var(--gray);
+  line-height: 1.6;
+  margin: 0;
 }
 
 .paco-desc {
