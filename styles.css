@@ -267,6 +267,24 @@ body {
   background: var(--light);
 }
 
+.paco-inner.animate-in .paco-img-wrap {
+  animation: slideInLeft 0.7s cubic-bezier(0.16,1,0.3,1) both;
+}
+
+.paco-inner.animate-in .paco-text {
+  animation: slideInRight 0.7s 0.15s cubic-bezier(0.16,1,0.3,1) both;
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
 .paco-inner {
   max-width: 1100px;
   margin: 0 auto;
@@ -281,7 +299,8 @@ body {
   border-radius: var(--radius);
   overflow: hidden;
   aspect-ratio: 4/3;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+  box-shadow: 0 20px 60px rgba(99,102,241,0.25), 0 4px 20px rgba(0,0,0,0.15);
+  cursor: pointer;
 }
 
 .paco-img {
@@ -289,6 +308,36 @@ body {
   height: 100%;
   object-fit: cover;
   display: block;
+  transition: transform 0.5s ease, filter 0.5s ease;
+  filter: saturate(1.1) contrast(1.05);
+}
+
+.paco-img-wrap:hover .paco-img {
+  transform: scale(1.06);
+  filter: saturate(1.25) contrast(1.1);
+}
+
+.paco-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(99,102,241,0.75) 0%, transparent 55%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  display: flex;
+  align-items: flex-end;
+  padding: 1.5rem;
+}
+
+.paco-img-wrap:hover .paco-overlay {
+  opacity: 1;
+}
+
+.paco-overlay-text {
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
 
 .paco-placeholder {

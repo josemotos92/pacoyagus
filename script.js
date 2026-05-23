@@ -27,6 +27,19 @@ document.querySelectorAll('.card').forEach((card, i) => {
   observer.observe(card);
 });
 
+// Animación de entrada para la sección de Paco
+const pacoObserver = new IntersectionObserver(
+  entries => entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('animate-in');
+      pacoObserver.unobserve(entry.target);
+    }
+  }),
+  { threshold: 0.2 }
+);
+const pacoInner = document.querySelector('.paco-inner');
+if (pacoInner) pacoObserver.observe(pacoInner);
+
 // Manejo del formulario
 document.getElementById('contactForm').addEventListener('submit', function (e) {
   e.preventDefault();
