@@ -1,5 +1,3 @@
 {
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/gatos/$1" }
-  ]
+  "cleanUrls": true
 }

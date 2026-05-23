@@ -2,149 +2,373 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale 1.0" />
-  <title>Paco & Agustino — Consultores Felinos</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>Alba Hernández Nails</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="img/luis1.png" type="image/png" />
+
+  <!-- Inter -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            base: "#f6f1ea",
+            ink: "#3b2f2a",
+            inkSoft: "#6b5b53",
+            title: "#5a463d",
+            cta: "#f3e7db",
+            ctaHover: "#ead8c7",
+            borderSoft: "#e5d7ca",
+            choco: "#2b1f1a",
+            cocoa: "#3a2a24",
+            caramel: "#b08a6a",
+            sand: "#f3e7db"
+          },
+          boxShadow: {
+            soft: "0 10px 30px rgba(43,31,26,.12)",
+            cta: "0 12px 30px rgba(176,138,106,.35)"
+          },
+          keyframes: {
+            pulseCTA: {
+              "0%, 100%": { transform: "scale(1)", boxShadow: "0 0 0 rgba(0,0,0,0)" },
+              "50%": { transform: "scale(1.05)", boxShadow: "0 0 30px rgba(243,231,219,0.95)" },
+            },
+          },
+        }
+      }
+    };
+  </script>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    body { background-color:#2b1f1a !important; }
+    .form-wrap{ height:100%;overflow:hidden;border-radius:1rem;border:1px solid #e5d7ca;background:#fff;position:relative; }
+    .form-loader{ position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:10px;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:#6b5b53;background:#fff;z-index:2; }
+    .dot{ width:8px;height:8px;border-radius:999px;background:#b08a6a;animation:bounce 1s infinite ease-in-out; }
+    .dot:nth-child(2){ animation-delay:.15s; }
+    .dot:nth-child(3){ animation-delay:.3s; }
+    @keyframes bounce{ 0%,80%,100%{ transform:translateY(0);opacity:.6; } 40%{ transform:translateY(-6px);opacity:1; } }
+    .form-ready .form-loader{ display:none; }
+    .form-inner{ position:relative;z-index:1;height:100%;width:100%;overflow:hidden;padding:8px; }
+    .systeme-iframe{ width:100%;height:100%;border:0;display:block;border-radius:0.75rem;background:#fff; }
+    @keyframes fadeIn{ from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+    .animate-fadeIn{ animation:fadeIn .3s ease-out; }
+    .glow-title{ text-shadow:0 0 5px rgba(216,191,163,0.7),0 0 12px rgba(216,191,163,0.5),0 4px 10px rgba(0,0,0,0.75); }
+  </style>
+
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window,document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init','1248799193738886');
+    fbq('track','PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1248799193738886&ev=PageView&noscript=1"
+  /></noscript>
 </head>
-<body>
 
-  <!-- HERO -->
-  <header class="hero">
-    <nav class="nav">
-      <span class="logo">🐾 PacoStudio</span>
-      <div class="nav-links">
-        <a href="#equipo" class="nav-cta">El Equipo</a>
-        <a href="#servicios" class="nav-cta">Servicios</a>
-        <a href="#contacto" class="nav-cta">Contactar</a>
+<body class="bg-base text-ink font-[Inter]">
+
+<section id="top-banner"
+  class="fixed top-0 w-full z-30 bg-[#2b1f1a] text-white transition-all duration-300 ease-out -translate-y-full opacity-0">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="relative flex items-end justify-center md:justify-between h-20 md:h-20 border-b border-white/40 text-xs sm:text-sm" style="padding-bottom:8px;">
+      <div class="w-full md:w-auto text-center md:text-left font-['Cinzel'] text-[#d8bfa3]" style="font-size:18px;">
+        <strong>EVENTO ONLINE <br><span class="font-semibold">10 , 11 Y 12 DE MARZO<br></span></strong>
       </div>
-    </nav>
-    <div class="hero-content">
-      <div class="coffee-wrap" aria-hidden="true">
-        <div class="coffee-cup">
-          <div class="coffee-steam">
-            <span></span><span></span><span></span>
+      <div class="hidden md:block absolute right-1 transform -translate-x-1/2 text-lg text-[#d8bfa3] font-['Playfair_Display'] tracking-wide">ALBA HERNÁNDEZ NAILS</div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const banner = document.getElementById('top-banner');
+  function handleBannerVisibility() {
+    const triggerPoint = window.innerHeight * 0.5;
+    if (window.scrollY > triggerPoint) {
+      banner.classList.remove('-translate-y-full','opacity-0');
+      banner.classList.add('translate-y-0','opacity-100');
+    } else {
+      banner.classList.add('-translate-y-full','opacity-0');
+      banner.classList.remove('translate-y-0','opacity-100');
+    }
+  }
+  window.addEventListener('scroll', handleBannerVisibility);
+  handleBannerVisibility();
+</script>
+
+<section class="relative overflow-hidden bg-[#2b1f1a] text-white min-h-screen flex items-center">
+  <div class="absolute inset-0 lg:hidden overflow-hidden opacity-30">
+    <video class="w-full h-full object-cover" autoplay loop muted playsinline><source src="img/video_ver.mp4" type="video/mp4" /></video>
+  </div>
+  <div class="absolute inset-0 hidden lg:block overflow-hidden opacity-20">
+    <video class="w-full h-full object-cover" autoplay loop muted playsinline><source src="img/video_hor.mp4" type="video/mp4" /></video>
+  </div>
+  <div class="absolute inset-0 bg-[#1c1411]/70"></div>
+  <div class="relative max-w-7xl mx-auto px-6 pt-8 pb-20 z-10 w-full">
+    <div class="flex flex-col items-center text-center">
+      <h3 class="font-['Playfair_Display'] text-[#d8bfa3] text-lg sm:text-xl font-semibold mb-6">Alba Hernández Nails</h3>
+      <h1 class="font-['Playfair_Display'] font-bold text-[#d8bfa3] text-[36px] sm:text-[48px] lg:text-[55px] leading-[1.08] sm:leading-[1.12] tracking-[-0.02em] max-w-[1150px] mx-auto">
+        Descubre el método para ser <br class="sm:hidden"><span class="glow-title">exitosa en las uñas,</span> <br class="sm:hidden">con seguridad <br class="sm:hidden"><span class="glow-title">y sin estancamiento.</span>
+      </h1>
+      <p class="mt-6 text-[13px] sm:text-[14px] leading-relaxed text-white max-w-[850px] mx-auto font-medium">Para manicuristas que saben que pueden estar en otro nivel y quieren crear una carrera profesional estable.</p>
+      <p class="mt-4 text-[14px] sm:text-[15px] leading-relaxed text-white max-w-[800px] mx-auto font-bold">Sin necesidad de tener más tiempo, más experiencia o el momento ideal.</p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-6 pt-10">
+        <a href="#registro" class="px-8 py-4 rounded-2xl text-lg font-semibold bg-[#f3e7db] text-[#2b1f1a] animate-[pulseCTA_2.5s_ease-in-out_infinite] hover:shadow-xl transition-transform shadow-cta">QUIERO MI PLAZA GRATIS</a>
+      </div>
+      <p class="font-['Cinzel'] text-[#d8bfa3] text-sm sm:text-base font-semibold tracking-widest pt-4">TALLER ONLINE | 10, 11 Y 12 DE MARZO</p>
+    </div>
+  </div>
+</section>
+
+<section class="relative min-h-[130px] sm:min-h-[260px] overflow-hidden bg-[#2b1f1a]">
+  <img src="img/villas2.jpg" alt="Inspiración y estilo" class="absolute inset-0 w-full h-full object-cover sm:object-cover bg-[#2b1f1a]" />
+  <div class="absolute inset-0 bg-[#2b1f1a]/90 backdrop-blur-[1px]"></div>
+  <div class="absolute bottom-0 inset-x-0 h-16 bg-gradient-to-t from-[#2b1f1a] to-transparent"></div>
+</section>
+
+<section class="text-white sm:pt-14" style="margin-top:-80px;z-index:10;position:relative;">
+  <div class="max-w-6xl mx-auto px-5 sm:px-6">
+    <h2 class="uppercase tracking-wider font-['Playfair_Display'] text-[#d8bfa3] text-center text-2xl sm:text-4xl md:text-4xl lg:text-4xl leading-tight font-semibold"><b>Por qué este taller puede desbloquear tu verdadero potencial:</b></h2>
+    <div class="mt-6 sm:mt-8 max-w-5xl mx-auto">
+      <div class="rounded-3xl border border-white/10 bg-white/5 backdrop-blur-[2px] p-3 sm:p-5">
+        <div class="space-y-4">
+          <div class="bg-[#f6f1ea] rounded-2xl border border-[#e5d7ca] p-5 sm:p-6 shadow-[0_10px_30px_rgba(0,0,0,0.10)] transition hover:translate-y-[-2px] hover:shadow-[0_16px_40px_rgba(0,0,0,0.14)]">
+            <div class="flex gap-4 items-start">
+              <span class="mt-1 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#2b1f1a] text-[#d8bfa3] font-bold">✓</span>
+              <div class="w-full">
+                <p class="text-[#2b1f1a] font-semibold text-[16px] sm:text-[18px] leading-snug">La mentalidad profesional que te hace dejar de dudar de ti</p>
+                <p class="mt-2 text-[#6b5b53] text-[14px] sm:text-[15px] leading-relaxed">Por qué tantas manicuristas con talento se sienten pequeñas…y cómo empezar a actuar, como una verdadera profesional.</p>
+              </div>
+            </div>
           </div>
-          <div class="coffee-body">
-            <div class="coffee-liquid"></div>
+          <div class="bg-[#f6f1ea] rounded-2xl border border-[#e5d7ca] p-5 sm:p-6 shadow-[0_10px_30px_rgba(0,0,0,0.10)] transition hover:translate-y-[-2px] hover:shadow-[0_16px_40px_rgba(0,0,0,0.14)]">
+            <div class="flex gap-4 items-start">
+              <span class="mt-1 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#2b1f1a] text-[#d8bfa3] font-bold">✓</span>
+              <div class="w-full">
+                <p class="text-[#2b1f1a] font-semibold text-[16px] sm:text-[18px] leading-snug">El error silencioso que te mantiene estancada (aunque tengas clientas)</p>
+                <p class="mt-2 text-[#6b5b53] text-[14px] sm:text-[15px] leading-relaxed">Por qué trabajas cada día, pero sigues en el mismo punto: falta de criterio, estructura y dirección.</p>
+              </div>
+            </div>
           </div>
-          <div class="coffee-handle"></div>
-          <div class="coffee-saucer"></div>
+          <div class="bg-[#f6f1ea] rounded-2xl border border-[#e5d7ca] p-5 sm:p-6 shadow-[0_10px_30px_rgba(0,0,0,0.10)] transition hover:translate-y-[-2px] hover:shadow-[0_16px_40px_rgba(0,0,0,0.14)]">
+            <div class="flex gap-4 items-start">
+              <span class="mt-1 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#2b1f1a] text-[#d8bfa3] font-bold">✓</span>
+              <div class="w-full">
+                <p class="text-[#2b1f1a] font-semibold text-[16px] sm:text-[18px] leading-snug">Cómo empezar a pensar y actuar como un negocio, no como un hobby</p>
+                <p class="mt-2 text-[#6b5b53] text-[14px] sm:text-[15px] leading-relaxed">Cómo subir precios con lógica, cobrar con seguridad y estructurar tu trabajo para atraer mejores clientas.</p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-[#f6f1ea] rounded-2xl border border-[#e5d7ca] p-5 sm:p-6 shadow-[0_10px_30px_rgba(0,0,0,0.10)] transition hover:translate-y-[-2px] hover:shadow-[0_16px_40px_rgba(0,0,0,0.14)]">
+            <div class="flex gap-4 items-start">
+              <span class="mt-1 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#2b1f1a] text-[#d8bfa3] font-bold">✓</span>
+              <div class="w-full">
+                <p class="text-[#2b1f1a] font-semibold text-[16px] sm:text-[18px] leading-snug">La base técnica que transforma tus resultados (y tu confianza)</p>
+                <p class="mt-2 text-[#6b5b53] text-[14px] sm:text-[15px] leading-relaxed">Entender el porqué de cada paso para dejar de copiar y empezar a crear sets más limpios, duraderos y profesionales.</p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-[#f6f1ea] rounded-2xl border border-[#e5d7ca] p-5 sm:p-6 shadow-[0_10px_30px_rgba(0,0,0,0.10)] transition hover:translate-y-[-2px] hover:shadow-[0_16px_40px_rgba(0,0,0,0.14)]">
+            <div class="flex gap-4 items-start">
+              <span class="mt-1 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#2b1f1a] text-[#d8bfa3] font-bold">✓</span>
+              <div class="w-full">
+                <p class="text-[#2b1f1a] font-semibold text-[16px] sm:text-[18px] leading-snug">El método que te permite construir estabilidad real con las uñas</p>
+                <p class="mt-2 text-[#6b5b53] text-[14px] sm:text-[15px] leading-relaxed">La estructura para ordenar agenda, precios y crecimiento sin trabajar el doble ni improvisar constantemente.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <h1 class="hero-title">Expertos en siesta,<br>estrategia y cajas</h1>
-      <p class="hero-subtitle">Paco y Agustino Langostino llevan años perfeccionando el arte de no hacer nada… con mucha clase. Consultores felinos al servicio de quien los necesite.</p>
-      <a href="#equipo" class="btn-primary">Conoce al equipo</a>
-    </div>
-  </header>
-
-  <!-- EQUIPO -->
-  <section class="paco-section" id="equipo">
-    <div class="paco-inner">
-      <div class="paco-img-wrap">
-        <img src="26c06df5-8911-46cb-a33b-b5d9df2db3d3.jpeg" alt="Paco y Agustino Langostino" class="paco-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-        <div class="paco-placeholder">🐱</div>
-        <div class="paco-overlay">
-          <span class="paco-overlay-text">Paco &amp; Agustino Langostino</span>
-        </div>
-      </div>
-      <div class="paco-text">
-        <p class="section-label">Nuestro equipo directivo</p>
-        <h2 class="section-title">Los jefes mandan</h2>
-
-        <div class="bio-card">
-          <span class="bio-name">🐈 Paco — CEO & Chief Nap Officer</span>
-          <p>Atigrado, pragmático y con una visión única del mundo desde dentro de una caja de zapatos Cloudstratus talla 11.5. Especialista en ocupar el 100% del espacio disponible sin importar las dimensiones.</p>
-        </div>
-
-        <div class="bio-card">
-          <span class="bio-name">🐈‍⬛ Agustino Langostino — Director de Relaciones Felinas</span>
-          <p>Blanco y naranja, con mirada de quien lo ha visto todo. Gestiona las relaciones externas con una elegancia que solo se consigue durmiendo 18 horas al día.</p>
-        </div>
-
-        <div class="paco-tags">
-          <span>📦 Box Experts</span>
-          <span>😴 Nap Directors</span>
-          <span>🐾 UX Testers</span>
-          <span>☀️ Sun Chasers</span>
-        </div>
+      <p class="mt-8 sm:mt-10 text-center text-lg sm:text-xl font-semibold leading-relaxed">No se trata de trabajar más,<br>sino de trabajar con:</p>
+      <p class="mt-2 text-center text-lg sm:text-xl font-semibold leading-relaxed"><span class="text-[#d8bfa3]">método</span>, <span class="text-[#d8bfa3]">seguridad</span> y <span class="text-[#d8bfa3]">visión profesional</span>.</p>
+      <div class="mt-8 sm:mt-10 text-center">
+        <a href="#registro" class="inline-flex justify-center items-center px-8 sm:px-10 py-4 rounded-2xl text-lg font-semibold bg-[#f3e7db] text-[#2b1f1a] animate-[pulseCTA_2.5s_ease-in-out_infinite] hover:shadow-xl hover:bg-[#ead8c7] transition">QUIERO MI PLAZA GRATIS</a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- SERVICIOS -->
-  <section class="services" id="servicios">
-    <p class="section-label">Lo que ofrecemos</p>
-    <h2 class="section-title">Nuestros servicios</h2>
-    <div class="cards">
-
-      <div class="card">
-        <div class="card-icon">📦</div>
-        <h3>Auditoría de Cajas</h3>
-        <p>Evaluamos cualquier caja, bolsa o recipiente disponible. Si cabe un gato, es apto. Si no, lo hacemos caber igualmente.</p>
-      </div>
-
-      <div class="card">
-        <div class="card-icon">😴</div>
-        <h3>Consultoría de Siesta</h3>
-        <p>Optimizamos tus horas de sueño con técnicas ancestrales felinas. Posiciones probadas en sofás, sillas de oficina y teclados.</p>
-      </div>
-
-      <div class="card">
-        <div class="card-icon">☀️</div>
-        <h3>Gestión Solar</h3>
-        <p>Identificamos los mejores rayos de sol de tu hogar y los ocupamos estratégicamente antes de que tú los necesites.</p>
-      </div>
-
-      <div class="card">
-        <div class="card-icon">🐾</div>
-        <h3>Supervisión de Proyectos</h3>
-        <p>Nos tumbamos encima del portátil en los momentos más críticos para garantizar que ningún deadline se tome demasiado en serio.</p>
-      </div>
-
-      <div class="card">
-        <div class="card-icon">👁️</div>
-        <h3>Vigilancia Nocturna</h3>
-        <p>Corremos a las 3am por toda la casa sin motivo aparente. Seguridad total garantizada o te devolvemos los ronroneos.</p>
-      </div>
-
-      <div class="card">
-        <div class="card-icon">🎯</div>
-        <h3>Estrategia de Ronroneo</h3>
-        <p>Plan personalizado de ronroneo para ablandar a cualquier humano reticente. Efectividad del 100% en obtención de chuches.</p>
-      </div>
-
+<section class="relative overflow-hidden bg-[#2b1f1a] py-16 sm:py-20">
+  <img src="img/comunidad2.jpg" alt="Comunidad privada" class="absolute inset-0 w-full h-full object-cover" />
+  <div class="absolute inset-0 bg-[#2b1f1a]/70"></div>
+  <div class="absolute top-0 inset-x-0 h-20 bg-gradient-to-b from-[#2b1f1a] to-transparent"></div>
+  <div class="absolute bottom-0 inset-x-0 h-20 bg-gradient-to-t from-[#2b1f1a] to-transparent"></div>
+  <div class="relative z-10">
+    <div class="max-w-4xl mx-auto px-6 text-left sm:text-center text-white">
+      <h2 class="text-2xl sm:text-3xl font-['Playfair_Display'] text-[#d8bfa3] mb-4"><b>COMUNIDAD PRIVADA DEL EVENTO</b></h2>
+      <p class="text-[15px] sm:text-lg leading-relaxed max-w-2xl sm:mx-auto text-white/90">Accede ahora a la comunidad privada de WhatsApp: recibirás acceso prioritario a los enlaces, regalos exclusivos, recordatorios y contenido previo que marcará la diferencia en tu proceso.</p>
+      <p class="mt-4 text-[15px] sm:text-lg leading-relaxed font-semibold max-w-2xl sm:mx-auto">Es el único canal donde compartiremos avisos y material extra. <span class="text-[#d8bfa3]">Si no estás dentro, simplemente te lo pierdes.</span></p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- CONTACTO -->
-  <section class="contact" id="contacto">
-    <div class="contact-inner">
-      <h2>¿Necesitas asesoramiento felino?</h2>
-      <p>Escríbenos y Paco o Agustino te responderán… cuando se despierten de la siesta.</p>
-      <form class="contact-form" id="contactForm" novalidate>
-        <div class="form-row">
-          <input type="text" id="name" placeholder="Tu nombre" required />
-          <input type="email" id="email" placeholder="Tu email" required />
+<section class="py-20 sm:py-24 bg-[#2b1f1a] text-white">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="flex flex-col md:flex-row md:items-start md:gap-14">
+      <div class="md:w-1/2">
+        <h2 class="text-3xl sm:text-4xl font-['Playfair_Display'] text-[#d8bfa3] text-center md:text-left">Alba Hernández</h2>
+        <p class="mt-2 text-[15.5px] sm:text-[17px] font-semibold text-white text-center md:text-left">Soy Alba Hernández y llevo 19 años en el mundo de la manicura.</p>
+        <div class="mt-6 text-[14.5px] sm:text-[15.5px] leading-relaxed text-white/90 space-y-4">
+          <p>Formo a manicuristas por toda España, colaboro con marcas líderes y dirijo mi propio salón desde hace más de 8 años.</p>
+          <p>Pero también me he sentido estancada, trabajando mucho sin ver avances reales.</p>
+          <p class="font-semibold text-white">Hasta que entendí algo: no era cuestión de hacer más.</p>
+          <p class="font-semibold text-[#d8bfa3]">Era cuestión de tener un método.</p>
+          <p>Creé un sistema para ordenar mi técnica, mi mentalidad y mi negocio. Un método que me permitió dejar de improvisar y construir algo estable.</p>
+          <p>Hoy ayudo a otras manicuristas a lograr lo mismo. Y por primera vez, lo llevo al formato digital para que puedas aplicarlo tú también.</p>
+          <p class="font-semibold text-white">Porque no necesitas más suerte.</p>
+          <p class="font-semibold text-white">Necesitas estructura, criterio y dirección.</p>
         </div>
-        <textarea id="message" placeholder="¿En qué podemos ayudarte? (Nada urgente, por favor)" rows="4" required></textarea>
-        <button type="submit" class="btn-primary">Enviar mensaje</button>
-        <p class="form-feedback" id="formFeedback" aria-live="polite"></p>
-      </form>
+        <div class="mt-9 text-center md:text-left">
+          <a href="#registro" class="inline-flex justify-center items-center px-8 sm:px-10 py-4 rounded-2xl text-lg font-semibold bg-[#f3e7db] text-[#2b1f1a] animate-[pulseCTA_2.5s_ease-in-out_infinite] hover:shadow-xl hover:bg-[#ead8c7] transition">QUIERO MI PLAZA GRATIS</a>
+        </div>
+      </div>
+      <div class="mt-10 md:mt-0 md:w-1/2 flex md:block">
+        <div class="relative w-full max-w-sm md:max-w-md md:sticky md:top-24 md:ml-auto">
+          <img src="img/luis6.jpg" alt="Alba Hernández Nails" class="rounded-2xl w-full object-cover shadow-soft md:h-[600px] lg:h-[660px]" />
+        </div>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <span class="logo">🐾 PacoStudio</span>
-    <p>© 2026 Paco & Agustino Langostino. Todos los ronroneos reservados.</p>
-    <div class="footer-links">
-      <a href="#equipo">El Equipo</a>
-      <a href="#servicios">Servicios</a>
-      <a href="#contacto">Contacto</a>
-      <a href="legal.html">Legal</a>
+<section class="bg-[#f6f1ea] py-24" id="registro">
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="text-3xl sm:text-4xl font-extrabold text-center mb-12 text-[#2b1f1a]">Preguntas frecuentes</h2>
+    <div class="space-y-4" id="faq">
+      <div class="border border-[#e5d7ca] rounded-xl overflow-hidden bg-white">
+        <button type="button" class="faq-btn w-full flex justify-between items-center p-6 text-left font-semibold text-lg text-[#2b1f1a]">¿Cuándo es y a qué hora?<span class="transition-transform duration-300">+</span></button>
+        <div class="faq-content max-h-0 overflow-hidden transition-all duration-300"><p class="p-6 pt-0 text-[#6b5b53]">Recibirás todos los detalles al entrar en la comunidad privada. Allí tendrás los enlaces, recordatorios y acceso a todo el contenido.</p></div>
+      </div>
+      <div class="border border-[#e5d7ca] rounded-xl overflow-hidden bg-white">
+        <button type="button" class="faq-btn w-full flex justify-between items-center p-6 text-left font-semibold text-lg text-[#2b1f1a]">¿Es realmente gratuita?<span class="transition-transform duration-300">+</span></button>
+        <div class="faq-content max-h-0 overflow-hidden transition-all duration-300"><p class="p-6 pt-0 text-[#6b5b53]">Sí. Es una formación sin coste porque quiero que entiendas el método antes de dar cualquier paso más.</p></div>
+      </div>
+      <div class="border border-[#e5d7ca] rounded-xl overflow-hidden bg-white">
+        <button type="button" class="faq-btn w-full flex justify-between items-center p-6 text-left font-semibold text-lg text-[#2b1f1a]">¿Necesito tener mucha experiencia o un salón propio?<span class="transition-transform duration-300">+</span></button>
+        <div class="faq-content max-h-0 overflow-hidden transition-all duration-300"><p class="p-6 pt-0 text-[#6b5b53]">No. Está pensada tanto para manicuristas que trabajan desde casa como para empleadas o dueñas de salón que quieren elevar su nivel y salir del estancamiento.</p></div>
+      </div>
+      <div class="border border-[#e5d7ca] rounded-xl overflow-hidden bg-white">
+        <button type="button" class="faq-btn w-full flex justify-between items-center p-6 text-left font-semibold text-lg text-[#2b1f1a]">¿Y si ahora mismo no me siento preparada?<span class="transition-transform duration-300">+</span></button>
+        <div class="faq-content max-h-0 overflow-hidden transition-all duration-300"><p class="p-6 pt-0 text-[#6b5b53]">Precisamente por eso deberías estar dentro. El taller está diseñado para darte claridad, estructura y seguridad, incluso si sientes que aún te falta nivel.</p></div>
+      </div>
+      <div class="border border-[#e5d7ca] rounded-xl overflow-hidden bg-white">
+        <button type="button" class="faq-btn w-full flex justify-between items-center p-6 text-left font-semibold text-lg text-[#2b1f1a]">¿Hay plazas limitadas?<span class="transition-transform duration-300">+</span></button>
+        <div class="faq-content max-h-0 overflow-hidden transition-all duration-300"><p class="p-6 pt-0 text-[#6b5b53]">Sí. El acceso es limitado para mantener un entorno cuidado y poder responder dudas.</p></div>
+      </div>
     </div>
-  </footer>
+    <div class="mt-12 text-center">
+      <a href="#registro" class="inline-flex justify-center items-center px-8 sm:px-10 py-4 rounded-2xl text-lg font-semibold bg-[#f3e7db] text-[#2b1f1a] animate-[pulseCTA_2.5s_ease-in-out_infinite] hover:shadow-xl hover:bg-[#ead8c7] transition">QUIERO MI PLAZA GRATIS</a>
+    </div>
+  </div>
+</section>
 
-  <script src="script.js"></script>
+<footer class="py-8 text-center text-sm text-[#6b5b53] bg-[#f6f1ea]">© 2025 · Alba Hernández Nails</footer>
+
+<div id="modal" class="fixed inset-0 z-40 hidden items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+  <div class="relative bg-[#f6f1ea] rounded-2xl w-full max-w-3xl shadow-2xl animate-fadeIn h-[88vh] sm:h-[86vh] flex flex-col overflow-hidden border border-[#e5d7ca]">
+    <div class="shrink-0 px-5 sm:px-6 py-4 border-b border-[#e5d7ca] flex items-center justify-between">
+      <div><h3 class="text-lg sm:text-xl font-semibold text-[#2b1f1a]">Reserva tu plaza</h3><p class="text-sm text-[#6b5b53]">Rellena tus datos y te enviamos el acceso.</p></div>
+      <button id="closeModal" type="button" aria-label="Cerrar" class="h-10 w-10 rounded-full bg-white border border-[#e5d7ca] text-[#6b5b53] hover:text-[#2b1f1a] hover:scale-105 transition flex items-center justify-center">✕</button>
+    </div>
+    <div class="flex-1 p-4 sm:p-6 overflow-hidden min-h-0">
+      <div id="systemeFormContainer" class="form-wrap w-full h-full min-h-0">
+        <div class="form-loader"><span>Cargando formulario</span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+        <div class="form-inner h-full"><iframe id="systemeIframe" class="systeme-iframe" title="Formulario de registro" loading="eager" src="about:blank" allowfullscreen></iframe></div>
+      </div>
+    </div>
+    <div class="shrink-0 px-6 py-4 text-center border-t border-[#e5d7ca] bg-[#f6f1ea]">
+      <button type="button" id="openLegalBtn" class="text-sm text-[#2b1f1a] underline underline-offset-4 font-semibold hover:opacity-80 transition">Ver términos y condiciones y política de privacidad</button>
+    </div>
+  </div>
+</div>
+
+<div id="offcanvas-overlay" class="fixed inset-0 bg-black/40 z-[55] opacity-0 pointer-events-none transition-opacity duration-300"></div>
+
+<div id="offcanvas" class="fixed bottom-0 left-0 w-full z-[60] bg-[#f6f1ea] rounded-t-3xl shadow-2xl transform translate-y-full transition-transform duration-300 ease-out max-h-[90vh] flex flex-col" aria-hidden="true">
+  <div class="p-4 border-b border-[#e5d7ca] text-center bg-[#f6f1ea] shrink-0">
+    <div class="w-12 h-1.5 bg-[#d7c4b2] rounded-full mx-auto mb-3"></div>
+    <button type="button" id="closeOffcanvasTop" class="px-6 py-3 bg-[#2b1f1a] text-white rounded-xl">Cerrar</button>
+    <h3 class="text-lg font-semibold text-[#2b1f1a] mt-3">Términos y condiciones & Política de privacidad</h3>
+  </div>
+  <div id="legalScroll" class="p-6 text-[#2b1f1a] overflow-y-auto flex-1">
+    <div class="space-y-6 text-sm sm:text-base leading-relaxed">
+      <section class="space-y-3">
+        <h2 class="text-xl sm:text-2xl font-extrabold tracking-tight text-[#b08a6a]">TÉRMINOS Y CONDICIONES DE USO</h2>
+        <p class="text-[#2b1f1a]">El presente sitio web es titularidad de Alba Hernández Nails. El acceso y uso de este sitio web atribuye la condición de usuario e implica la aceptación plena de los presentes Términos y Condiciones.</p>
+        <p class="text-[#2b1f1a]">Los datos facilitados por el usuario podrán ser utilizados para el envío de comunicaciones relacionadas con masterclasses, contenidos, formaciones e invitaciones a comunidades privadas. El usuario podrá darse de baja en cualquier momento.</p>
+      </section>
+      <hr class="border-[#e5d7ca]" />
+      <section class="space-y-3">
+        <h2 class="text-xl sm:text-2xl font-extrabold tracking-tight text-[#b08a6a]">POLÍTICA DE PRIVACIDAD</h2>
+        <p class="text-[#2b1f1a]"><b>Responsable:</b> IAR MANAGEMENT LLC<br><b>Contacto:</b> <a href="mailto:imrepresent.co@gmail.com" class="underline underline-offset-4 font-semibold">imrepresent.co@gmail.com</a></p>
+        <p class="text-[#2b1f1a]">Tratamos tus datos conforme al RGPD. Puedes ejercer tus derechos de acceso, rectificación y supresión contactando al correo indicado.</p>
+      </section>
+      <button type="button" id="closeOffcanvasBottom" class="mt-2 px-6 py-3 bg-[#2b1f1a] text-white rounded-xl w-full">Cerrar</button>
+    </div>
+  </div>
+</div>
+
+<iframe id="systemeIframePreload" src="https://imrepresent-co.systeme.io/21027d98" style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;left:-9999px;top:-9999px;" aria-hidden="true"></iframe>
+
+<script>
+  const SYSTEME_BASE_URL = "https://imrepresent-co.systeme.io/21027d98";
+  const modalEl = document.getElementById('modal');
+  const closeModalBtn = document.getElementById('closeModal');
+  const systemeFormContainer = document.getElementById('systemeFormContainer');
+  const systemeIframe = document.getElementById('systemeIframe');
+  const offcanvasEl = document.getElementById('offcanvas');
+  const offcanvasOverlayEl = document.getElementById('offcanvas-overlay');
+  const openLegalBtn = document.getElementById('openLegalBtn');
+  const closeOffcanvasTop = document.getElementById('closeOffcanvasTop');
+  const closeOffcanvasBottom = document.getElementById('closeOffcanvasBottom');
+  function isModalOpen(){ return modalEl && !modalEl.classList.contains('hidden'); }
+  function isOffcanvasOpen(){ return offcanvasEl && !offcanvasEl.classList.contains('translate-y-full'); }
+  function syncBodyScrollLock(){ if(isModalOpen()||isOffcanvasOpen()) document.body.classList.add('overflow-hidden'); else document.body.classList.remove('overflow-hidden'); }
+  function buildUrlWithUtm(baseUrl){ const current=new URL(window.location.href);const u=new URL(baseUrl);["utm_source","utm_medium","utm_campaign","utm_term","utm_content","fbclid","gclid"].forEach(k=>{const v=current.searchParams.get(k);if(v)u.searchParams.set(k,v)});return u.toString(); }
+  const SYSTEME_TARGET_URL = buildUrlWithUtm(SYSTEME_BASE_URL);
+  let systemeLoadedOnce = false;
+  if(systemeIframe&&systemeFormContainer){ systemeIframe.addEventListener('load',()=>{ systemeLoadedOnce=true; systemeFormContainer.classList.add('form-ready'); }); }
+  function openModal(){ if(!modalEl)return; modalEl.classList.remove('hidden'); modalEl.classList.add('flex'); if(systemeFormContainer) systemeFormContainer.classList.remove('form-ready'); if(systemeIframe){ const s=systemeIframe.getAttribute('src')||''; if(!s||s==='about:blank') systemeIframe.setAttribute('src',SYSTEME_TARGET_URL); } if(systemeFormContainer&&systemeLoadedOnce) systemeFormContainer.classList.add('form-ready'); syncBodyScrollLock(); }
+  function closeModal(){ if(!modalEl)return; if(isOffcanvasOpen()) closeOffcanvas(); modalEl.classList.add('hidden'); modalEl.classList.remove('flex'); syncBodyScrollLock(); }
+  document.querySelectorAll('a[href="#registro"]').forEach(btn=>{ btn.addEventListener('click',(e)=>{ e.preventDefault(); openModal(); }); });
+  if(closeModalBtn) closeModalBtn.addEventListener('click',closeModal);
+  if(modalEl) modalEl.addEventListener('click',(e)=>{ if(e.target===modalEl) closeModal(); });
+  function openOffcanvas(){ if(!offcanvasEl||!offcanvasOverlayEl)return; offcanvasEl.classList.remove('translate-y-full'); offcanvasOverlayEl.classList.remove('opacity-0','pointer-events-none'); const s=document.getElementById('legalScroll'); if(s) s.scrollTop=0; syncBodyScrollLock(); }
+  function closeOffcanvas(){ if(!offcanvasEl||!offcanvasOverlayEl)return; offcanvasEl.classList.add('translate-y-full'); offcanvasOverlayEl.classList.add('opacity-0','pointer-events-none'); syncBodyScrollLock(); }
+  if(openLegalBtn) openLegalBtn.addEventListener('click',openOffcanvas);
+  if(offcanvasOverlayEl) offcanvasOverlayEl.addEventListener('click',closeOffcanvas);
+  if(closeOffcanvasTop) closeOffcanvasTop.addEventListener('click',closeOffcanvas);
+  if(closeOffcanvasBottom) closeOffcanvasBottom.addEventListener('click',closeOffcanvas);
+  document.addEventListener('keydown',(e)=>{ if(e.key!=='Escape')return; if(isOffcanvasOpen()){closeOffcanvas();return;} if(isModalOpen()) closeModal(); });
+  (function(){ const p=document.getElementById('systemeIframePreload'); if(p) p.setAttribute('src',SYSTEME_TARGET_URL); })();
+</script>
+<script>
+  document.querySelectorAll(".faq-btn").forEach((btn)=>{
+    btn.addEventListener("click",()=>{
+      const item=btn.closest("div.border");
+      const content=item.querySelector(".faq-content");
+      const icon=btn.querySelector("span");
+      const isOpen=content.classList.contains("open");
+      document.querySelectorAll(".faq-content.open").forEach((o)=>{ if(o!==content){o.classList.remove("open");o.style.maxHeight="0px";const i=o.parentElement.querySelector(".faq-btn span");if(i)i.textContent="+";} });
+      if(isOpen){content.classList.remove("open");content.style.maxHeight="0px";if(icon)icon.textContent="+";}else{content.classList.add("open");content.style.maxHeight=content.scrollHeight+"px";if(icon)icon.textContent="–";}
+    });
+  });
+</script>
 </body>
 </html>
