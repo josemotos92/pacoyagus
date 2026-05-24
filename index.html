@@ -60,6 +60,10 @@
       object-fit:cover; object-position:center;
       display:block; border-radius:.75rem;
     }
+
+    /* marquee */
+    @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    .marquee-track{display:inline-block;white-space:nowrap;animation:marquee 24s linear infinite;}
   </style>
 </head>
 
@@ -144,6 +148,41 @@
       <p class="font-['Cinzel'] text-[#d8bfa3] text-sm sm:text-base font-semibold tracking-widest pt-4">
         TALLER ONLINE FELINO | 10, 11 Y 12 DE MARZO
       </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== MARQUEE ===== -->
+<div class="overflow-hidden bg-[#1c1411] border-y border-[#d8bfa3]/20 py-3">
+  <div class="marquee-track text-[#d8bfa3] text-sm font-['Cinzel'] tracking-widest">
+    <span>· FELINO PREMIUM · MÉTODO CONTRASTADO · 9 VIDAS GARANTIZADAS · ATÚN INCLUIDO · NO APTO PARA PERROS · SIESTA CON PROPÓSITO · ZARPAZO DE AUTOR · FELINO PREMIUM · MÉTODO CONTRASTADO · 9 VIDAS GARANTIZADAS · ATÚN INCLUIDO · NO APTO PARA PERROS · SIESTA CON PROPÓSITO · ZARPAZO DE AUTOR ·&nbsp;</span>
+  </div>
+</div>
+
+
+<!-- ===== STATS ===== -->
+<section class="bg-[#2b1f1a] py-12 sm:py-16">
+  <div class="max-w-5xl mx-auto px-6 grid grid-cols-2 sm:grid-cols-4 gap-8 text-center">
+    <div>
+      <p class="font-['Playfair_Display'] text-[#d8bfa3] text-5xl sm:text-6xl font-bold leading-none">7</p>
+      <p class="text-white/40 text-[10px] uppercase tracking-widest mt-1">años</p>
+      <p class="text-white/80 text-sm mt-2 leading-snug">Dominando el territorio</p>
+    </div>
+    <div>
+      <p class="font-['Playfair_Display'] text-[#d8bfa3] text-5xl sm:text-6xl font-bold leading-none">16h</p>
+      <p class="text-white/40 text-[10px] uppercase tracking-widest mt-1">al día</p>
+      <p class="text-white/80 text-sm mt-2 leading-snug">De siesta con estructura</p>
+    </div>
+    <div>
+      <p class="font-['Playfair_Display'] text-[#d8bfa3] text-5xl sm:text-6xl font-bold leading-none">0</p>
+      <p class="text-white/40 text-[10px] uppercase tracking-widest mt-1">veces</p>
+      <p class="text-white/80 text-sm mt-2 leading-snug">Que hemos hecho caso al veterinario</p>
+    </div>
+    <div>
+      <p class="font-['Playfair_Display'] text-[#d8bfa3] text-5xl sm:text-6xl font-bold leading-none">∞</p>
+      <p class="text-white/40 text-[10px] uppercase tracking-widest mt-1">destrozos</p>
+      <p class="text-white/80 text-sm mt-2 leading-snug">Documentados y certificados</p>
     </div>
   </div>
 </section>
@@ -271,6 +310,112 @@
         </a>
       </div>
     </div>
+  </div>
+</section>
+
+
+<!-- ===== MÓDULOS DEL TALLER ===== -->
+<section class="py-20 sm:py-24 bg-[#f6f1ea]">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="font-['Playfair_Display'] text-[#2b1f1a] text-center text-2xl sm:text-3xl font-semibold mb-3">
+      Lo que vas a aprender
+    </h2>
+    <p class="text-center text-[#6b5b53] text-sm sm:text-base mb-10">
+      Un programa diseñado por felinos, para felinos. Con estructura. Con criterio. Con siesta.
+    </p>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+      <div class="bg-white rounded-2xl border border-[#e5d7ca] p-6 shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
+        <p class="font-['Playfair_Display'] text-[#d8bfa3] text-5xl font-bold mb-4">01</p>
+        <h3 class="text-[#2b1f1a] font-semibold text-lg mb-2">Mindset Felino</h3>
+        <p class="text-[#6b5b53] text-sm leading-relaxed">Dejar de actuar como mascota y empezar a actuar como el dueño del piso que realmente eres. Aunque en el catastro figure otro.</p>
+      </div>
+      <div class="bg-white rounded-2xl border border-[#e5d7ca] p-6 shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
+        <p class="font-['Playfair_Display'] text-[#d8bfa3] text-5xl font-bold mb-4">02</p>
+        <h3 class="text-[#2b1f1a] font-semibold text-lg mb-2">El Maullido como Herramienta de Negociación</h3>
+        <p class="text-[#6b5b53] text-sm leading-relaxed">Técnicas avanzadas para conseguir croquetas extra sin comprometer tu dignidad. Incluye el maullido a las 3am como táctica de presión.</p>
+      </div>
+      <div class="bg-white rounded-2xl border border-[#e5d7ca] p-6 shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
+        <p class="font-['Playfair_Display'] text-[#d8bfa3] text-5xl font-bold mb-4">03</p>
+        <h3 class="text-[#2b1f1a] font-semibold text-lg mb-2">Arquitectura del Sofá</h3>
+        <p class="text-[#6b5b53] text-sm leading-relaxed">Cómo reclamar cada centímetro del territorio, gestionar la agenda del humano y cobrar en especie con criterio y visión a largo plazo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== TESTIMONIOS ===== -->
+<section class="py-20 sm:py-24 bg-[#2b1f1a]">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="font-['Playfair_Display'] text-[#d8bfa3] text-center text-2xl sm:text-3xl font-semibold mb-3">
+      Lo que dicen nuestros alumnos
+    </h2>
+    <p class="text-center text-white/60 text-sm sm:text-base mb-10">
+      Resultados reales de felinos reales. Verificados por nosotros mismos.
+    </p>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+      <div class="bg-white rounded-2xl border border-[#e5d7ca] p-6 flex flex-col items-center text-center shadow-[0_10px_30px_rgba(0,0,0,0.12)]">
+        <span class="text-5xl mb-3">🐱</span>
+        <p class="text-[#2b1f1a] font-bold text-base mb-2">Mittens de Madrid</p>
+        <p class="text-[#6b5b53] text-sm italic leading-relaxed">"Antes pedía el desayuno con un simple maullido. Ahora negocio doble ración con una sola mirada. El método funciona."</p>
+      </div>
+      <div class="bg-white rounded-2xl border border-[#e5d7ca] p-6 flex flex-col items-center text-center shadow-[0_10px_30px_rgba(0,0,0,0.12)]">
+        <span class="text-5xl mb-3">🐱</span>
+        <p class="text-[#2b1f1a] font-bold text-base mb-2">Sir Fluffington III</p>
+        <p class="text-[#6b5b53] text-sm italic leading-relaxed">"Llevaba años arañando el sofá sin criterio. Gracias a Paco y Agustino, ahora lo hago con estructura y visión a largo plazo."</p>
+      </div>
+      <div class="bg-white rounded-2xl border border-[#e5d7ca] p-6 flex flex-col items-center text-center shadow-[0_10px_30px_rgba(0,0,0,0.12)]">
+        <span class="text-5xl mb-3">🐱</span>
+        <p class="text-[#2b1f1a] font-bold text-base mb-2">Agatha Bigotes</p>
+        <p class="text-[#6b5b53] text-sm italic leading-relaxed">"Pensé que no estaba preparada. Resulta que simplemente necesitaba método. Y más horas de siesta."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== SOLICITUDES RECHAZADAS ===== -->
+<section class="py-20 sm:py-24 bg-[#1c1411]">
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="font-['Playfair_Display'] text-[#d8bfa3] text-center text-2xl sm:text-3xl font-semibold mb-2">
+      Solicitudes Denegadas 🚫
+    </h2>
+    <p class="text-center text-white/60 text-sm sm:text-base mb-10">
+      No todo el mundo puede acceder al método. Algunas solicitudes fueron revisadas y rechazadas con todo el rigor institucional.
+    </p>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+
+      <div class="relative bg-[#1a0f0f] rounded-2xl border border-red-900/50 p-6 flex flex-col items-center text-center overflow-hidden">
+        <div class="w-24 h-24 rounded-full overflow-hidden mb-4 border-2 border-red-900/50">
+          <img src="IMG_1688.jpeg" alt="Solicitante rechazado" class="w-full h-full object-cover object-center" />
+        </div>
+        <p class="text-white font-bold mb-1">Ramón el Ruidoso</p>
+        <p class="text-white/50 text-xs italic">Motivo: exceso de ladridos documentado en tres continentes</p>
+        <div class="absolute top-5 right-3 bg-red-700 text-white text-[10px] font-extrabold px-2 py-0.5 rounded tracking-widest" style="transform:rotate(18deg);">RECHAZADO</div>
+      </div>
+
+      <div class="relative bg-[#1a0f0f] rounded-2xl border border-red-900/50 p-6 flex flex-col items-center text-center overflow-hidden">
+        <div class="w-24 h-24 rounded-full overflow-hidden mb-4 border-2 border-red-900/50">
+          <img src="IMG_1688.jpeg" alt="Solicitante rechazado" class="w-full h-full object-cover object-center" />
+        </div>
+        <p class="text-white font-bold mb-1">Brutus Ladridos</p>
+        <p class="text-white/50 text-xs italic">Motivo: especie incompatible con el método felino premium</p>
+        <div class="absolute top-5 right-3 bg-red-700 text-white text-[10px] font-extrabold px-2 py-0.5 rounded tracking-widest" style="transform:rotate(18deg);">RECHAZADO</div>
+      </div>
+
+      <div class="relative bg-[#1a0f0f] rounded-2xl border border-red-900/50 p-6 flex flex-col items-center text-center overflow-hidden">
+        <div class="w-24 h-24 rounded-full overflow-hidden mb-4 border-2 border-red-900/50">
+          <img src="IMG_1688.jpeg" alt="Solicitante rechazado" class="w-full h-full object-cover object-center" />
+        </div>
+        <p class="text-white font-bold mb-1">Kevin de Chamberí</p>
+        <p class="text-white/50 text-xs italic">Motivo: olor a perro detectado en el formulario de inscripción</p>
+        <div class="absolute top-5 right-3 bg-red-700 text-white text-[10px] font-extrabold px-2 py-0.5 rounded tracking-widest" style="transform:rotate(18deg);">RECHAZADO</div>
+      </div>
+
+    </div>
+    <p class="text-center text-white/25 text-xs mt-8 italic">
+      * Todos los solicitantes fueron informados de la decisión. Ninguno lo aceptó con dignidad.
+    </p>
   </div>
 </section>
 
@@ -427,6 +572,25 @@
 
       </div>
     </div>
+  </div>
+</section>
+
+
+<!-- ===== GARANTÍA DE 9 VIDAS ===== -->
+<section class="py-16 sm:py-20 bg-[#f6f1ea]">
+  <div class="max-w-3xl mx-auto px-6 text-center">
+    <div class="text-6xl mb-5">🛡️</div>
+    <h2 class="font-['Playfair_Display'] text-[#2b1f1a] text-2xl sm:text-3xl font-bold mb-4">
+      Garantía de 9 vidas
+    </h2>
+    <p class="text-[#6b5b53] text-base sm:text-lg leading-relaxed">
+      Si al terminar el taller no has recuperado al menos una vida desperdiciada en no tener método,
+      <strong class="text-[#2b1f1a]">te devolvemos íntegramente tu lata de atún.</strong>
+      Sin preguntas. Sin burocracia. Sin ladridos.
+    </p>
+    <p class="mt-4 text-[#b08a6a] text-sm italic">
+      * La garantía no aplica si has hecho caso al veterinario en algún momento del proceso.
+    </p>
   </div>
 </section>
 
