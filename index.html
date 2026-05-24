@@ -37,6 +37,8 @@
 
   <style>
     body{background-color:#2b1f1a !important;}
+
+    /* modal */
     .form-wrap  {height:100%;overflow:hidden;border-radius:1rem;border:1px solid #e5d7ca;background:#fff;position:relative;}
     .form-loader{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:10px;
                  font-family:Inter,sans-serif;color:#6b5b53;background:#fff;z-index:2;}
@@ -46,9 +48,22 @@
     .form-ready .form-loader{display:none;}
     .form-inner{position:relative;z-index:1;height:100%;width:100%;overflow:hidden;padding:8px;}
     .systeme-iframe{width:100%;height:100%;border:0;display:block;border-radius:.75rem;background:#fff;}
+
     @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
     .animate-fadeIn{animation:fadeIn .3s ease-out;}
+
     .glow-title{text-shadow:0 0 5px rgba(216,191,163,.7),0 0 12px rgba(216,191,163,.5),0 4px 10px rgba(0,0,0,.75);}
+
+    /* galería */
+    .gallery-img{
+      width:100%; height:100%;
+      object-fit:cover; object-position:center;
+      display:block; border-radius:.75rem;
+    }
+
+    /* marquee */
+    @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    .marquee-track{display:inline-block;white-space:nowrap;animation:marquee 24s linear infinite;}
   </style>
 </head>
 
@@ -62,7 +77,9 @@
     <div class="relative flex items-end justify-center md:justify-between h-20
                 border-b border-white/40" style="padding-bottom:8px;">
       <div class="w-full md:w-auto text-center md:text-left font-['Cinzel'] text-[#d8bfa3]" style="font-size:17px;">
-        <strong>TALLER ONLINE FELINO 🐾<br><span class="font-semibold">10, 11 Y 12 DE MARZO</span></strong>
+        <strong>TALLER ONLINE FELINO 🐾<br>
+          <span class="font-semibold">10, 11 Y 12 DE MARZO</span>
+        </strong>
       </div>
       <div class="hidden md:block absolute right-1 -translate-x-1/2 text-lg text-[#d8bfa3] font-['Playfair_Display'] tracking-wide">
         PACO PAQUILLO &amp; AGUSTINO LANGOSTINO ACADEMY
@@ -72,130 +89,387 @@
 </section>
 <script>
   const banner=document.getElementById('top-banner');
-  function tb(){if(window.scrollY>window.innerHeight*.5){banner.classList.remove('-translate-y-full','opacity-0');banner.classList.add('translate-y-0','opacity-100');}else{banner.classList.add('-translate-y-full','opacity-0');banner.classList.remove('translate-y-0','opacity-100');}}
+  function tb(){
+    if(window.scrollY>window.innerHeight*.5){
+      banner.classList.remove('-translate-y-full','opacity-0');
+      banner.classList.add('translate-y-0','opacity-100');
+    }else{
+      banner.classList.add('-translate-y-full','opacity-0');
+      banner.classList.remove('translate-y-0','opacity-100');
+    }
+  }
   window.addEventListener('scroll',tb);tb();
 </script>
 
+
 <!-- ===== HERO ===== -->
 <section class="relative overflow-hidden bg-[#2b1f1a] text-white min-h-screen flex items-center">
+
+  <!-- foto de fondo: los dos gritando en el árbol -->
   <div class="absolute inset-0">
-    <video id="hero-video" autoplay loop muted playsinline webkit-playsinline preload="auto" disablepictureinpicture class="w-full h-full object-cover object-[center_30%]" style="pointer-events:none;">
-      <source src="hero.mp4" type="video/mp4" />
-      <img src="IMG_1704.jpeg" alt="" class="w-full h-full object-cover object-[center_30%]" />
-    </video>
-    <div class="absolute inset-0 bg-[#1c1411]/80"></div>
+    <img src="IMG_1704.jpeg" alt=""
+         class="w-full h-full object-cover object-[center_30%]" />
+    <div class="absolute inset-0 bg-[#1c1411]/72"></div>
   </div>
+
   <div class="relative max-w-7xl mx-auto px-6 pt-8 pb-20 z-10 w-full">
     <div class="flex flex-col items-center text-center">
-      <h3 class="font-['Playfair_Display'] text-[#d8bfa3] text-lg sm:text-xl font-semibold mb-6">Paco Paquillo &amp; Agustino Langostino Academy</h3>
-      <h1 class="font-['Playfair_Display'] font-bold text-[#d8bfa3] text-[36px] sm:text-[48px] lg:text-[55px] leading-[1.08] tracking-[-0.02em] max-w-[1150px] mx-auto">
-        Descubre el método para ser<br class="sm:hidden"><span class="glow-title"> exitoso en el sofá,</span><br class="sm:hidden">con criterio<br class="sm:hidden"><span class="glow-title"> y sin levantarte jamás.</span>
+
+      <h3 class="font-['Playfair_Display'] text-[#d8bfa3] text-lg sm:text-xl font-semibold mb-6">
+        Paco Paquillo &amp; Agustino Langostino Academy
+      </h3>
+
+      <h1 class="font-['Playfair_Display'] font-bold text-[#d8bfa3]
+                 text-[36px] sm:text-[48px] lg:text-[55px]
+                 leading-[1.08] tracking-[-0.02em] max-w-[1150px] mx-auto">
+        Descubre el método para ser<br class="sm:hidden">
+        <span class="glow-title"> exitoso en el sofá,</span><br class="sm:hidden">
+        con criterio<br class="sm:hidden">
+        <span class="glow-title"> y sin levantarte jamás.</span>
       </h1>
-      <p class="mt-6 text-[13px] sm:text-[14px] leading-relaxed text-white max-w-[850px] mx-auto font-medium">Para felinos que saben que pueden estar en otro nivel y quieren construir una carrera profesional estable a base de ronroneos estratégicos, arañazos con criterio y miradas de desprecio bien ejecutadas.</p>
-      <p class="mt-4 text-[14px] sm:text-[15px] leading-relaxed text-white max-w-[800px] mx-auto font-bold">Sin necesidad de más energía, más motivación ni el momento ideal para salir de la siesta.</p>
+
+      <p class="mt-6 text-[13px] sm:text-[14px] leading-relaxed text-white max-w-[850px] mx-auto font-medium">
+        Para felinos que saben que pueden estar en otro nivel y quieren construir
+        una carrera profesional estable a base de ronroneos estratégicos,
+        arañazos con criterio y miradas de desprecio bien ejecutadas.
+      </p>
+      <p class="mt-4 text-[14px] sm:text-[15px] leading-relaxed text-white max-w-[800px] mx-auto font-bold">
+        Sin necesidad de más energía, más motivación ni el momento ideal para salir de la siesta.
+      </p>
+
       <div class="flex flex-col sm:flex-row items-center justify-center gap-6 pt-10">
-        <a href="#registro" class="px-8 py-4 rounded-2xl text-lg font-semibold bg-[#f3e7db] text-[#2b1f1a] animate-[pulseCTA_2.5s_ease-in-out_infinite] hover:shadow-xl transition-transform shadow-cta">QUIERO MI PLAZA GRATIS 🐾</a>
+        <a href="#registro"
+           class="px-8 py-4 rounded-2xl text-lg font-semibold bg-[#f3e7db] text-[#2b1f1a]
+                  animate-[pulseCTA_2.5s_ease-in-out_infinite] hover:shadow-xl transition-transform shadow-cta">
+          QUIERO MI PLAZA GRATIS 🐾
+        </a>
       </div>
-      <p class="font-['Cinzel'] text-[#d8bfa3] text-sm sm:text-base font-semibold tracking-widest pt-4">TALLER ONLINE FELINO | 10, 11 Y 12 DE MARZO</p>
+
+      <p class="font-['Cinzel'] text-[#d8bfa3] text-sm sm:text-base font-semibold tracking-widest pt-4">
+        TALLER ONLINE FELINO | 10, 11 Y 12 DE MARZO
+      </p>
     </div>
   </div>
 </section>
 
+
+<!-- ===== MARQUEE ===== -->
+<div class="overflow-hidden bg-[#1c1411] border-y border-[#d8bfa3]/20 py-3">
+  <div class="marquee-track text-[#d8bfa3] text-sm font-['Cinzel'] tracking-widest">
+    <span>· FELINO PREMIUM · MÉTODO CONTRASTADO · 9 VIDAS GARANTIZADAS · ATÚN INCLUIDO · NO APTO PARA PERROS · SIESTA CON PROPÓSITO · ZARPAZO DE AUTOR · FELINO PREMIUM · MÉTODO CONTRASTADO · 9 VIDAS GARANTIZADAS · ATÚN INCLUIDO · NO APTO PARA PERROS · SIESTA CON PROPÓSITO · ZARPAZO DE AUTOR ·&nbsp;</span>
+  </div>
+</div>
+
+
+<!-- ===== STATS ===== -->
+<section class="bg-[#2b1f1a] py-12 sm:py-16">
+  <div class="max-w-5xl mx-auto px-6 grid grid-cols-2 sm:grid-cols-4 gap-8 text-center">
+    <div>
+      <p class="font-['Playfair_Display'] text-[#d8bfa3] text-5xl sm:text-6xl font-bold leading-none">7</p>
+      <p class="text-white/40 text-[10px] uppercase tracking-widest mt-1">años</p>
+      <p class="text-white/80 text-sm mt-2 leading-snug">Dominando el territorio</p>
+    </div>
+    <div>
+      <p class="font-['Playfair_Display'] text-[#d8bfa3] text-5xl sm:text-6xl font-bold leading-none">16h</p>
+      <p class="text-white/40 text-[10px] uppercase tracking-widest mt-1">al día</p>
+      <p class="text-white/80 text-sm mt-2 leading-snug">De siesta con estructura</p>
+    </div>
+    <div>
+      <p class="font-['Playfair_Display'] text-[#d8bfa3] text-5xl sm:text-6xl font-bold leading-none">0</p>
+      <p class="text-white/40 text-[10px] uppercase tracking-widest mt-1">veces</p>
+      <p class="text-white/80 text-sm mt-2 leading-snug">Que hemos hecho caso al veterinario</p>
+    </div>
+    <div>
+      <p class="font-['Playfair_Display'] text-[#d8bfa3] text-5xl sm:text-6xl font-bold leading-none">∞</p>
+      <p class="text-white/40 text-[10px] uppercase tracking-widest mt-1">destrozos</p>
+      <p class="text-white/80 text-sm mt-2 leading-snug">Documentados y certificados</p>
+    </div>
+  </div>
+</section>
+
+
 <!-- ===== TRANSICIÓN ===== -->
 <section class="relative h-48 sm:h-72 overflow-hidden bg-[#2b1f1a]">
-  <img src="IMG_1707.jpeg" alt="Durmiendo juntos tras una dura jornada" class="absolute inset-0 w-full h-full object-cover object-[center_40%]" />
+  <img src="IMG_1707.jpeg" alt="Durmiendo juntos tras una dura jornada de no hacer nada"
+       class="absolute inset-0 w-full h-full object-cover object-[center_40%]" />
   <div class="absolute inset-0 bg-[#2b1f1a]/80"></div>
   <div class="absolute bottom-0 inset-x-0 h-20 bg-gradient-to-t from-[#2b1f1a] to-transparent"></div>
 </section>
 
+
 <!-- ===== BENEFICIOS ===== -->
 <section class="text-white sm:pt-14" style="margin-top:-80px;z-index:10;position:relative;">
   <div class="max-w-6xl mx-auto px-5 sm:px-6">
-    <h2 class="uppercase tracking-wider font-['Playfair_Display'] text-[#d8bfa3] text-center text-2xl sm:text-4xl leading-tight font-semibold"><b>Por qué este taller puede desbloquear tu verdadero potencial gatuno:</b></h2>
+    <h2 class="uppercase tracking-wider font-['Playfair_Display'] text-[#d8bfa3] text-center
+               text-2xl sm:text-4xl leading-tight font-semibold">
+      <b>Por qué este taller puede desbloquear tu verdadero potencial gatuno:</b>
+    </h2>
+
     <div class="mt-6 sm:mt-8 max-w-5xl mx-auto">
       <div class="rounded-3xl border border-white/10 bg-white/5 backdrop-blur-[2px] p-3 sm:p-5">
         <div class="space-y-4">
 
+          <!-- 1 -->
           <div class="bg-[#f6f1ea] rounded-2xl border border-[#e5d7ca] p-5 sm:p-6 shadow-[0_10px_30px_rgba(0,0,0,0.10)] transition hover:-translate-y-0.5">
-            <div class="flex gap-4 items-start"><span class="mt-1 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#2b1f1a] text-[#d8bfa3] font-bold">🐾</span>
-              <div><p class="text-[#2b1f1a] font-semibold text-[16px] sm:text-[18px] leading-snug">La mentalidad gatuna que te hace dueño del piso (aunque en el catastro figure otro)</p>
-              <p class="mt-2 text-[#6b5b53] text-[14px] sm:text-[15px] leading-relaxed">Por qué tantos felinos con talento se sienten pequeños... y cómo empezar a actuar como el verdadero jefe del territorio, aunque el humano crea que paga el alquiler.</p></div></div>
+            <div class="flex gap-4 items-start">
+              <span class="mt-1 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#2b1f1a] text-[#d8bfa3] font-bold">🐾</span>
+              <div>
+                <p class="text-[#2b1f1a] font-semibold text-[16px] sm:text-[18px] leading-snug">
+                  La mentalidad gatuna que te hace dueño del piso (aunque en el catastro figure otro)
+                </p>
+                <p class="mt-2 text-[#6b5b53] text-[14px] sm:text-[15px] leading-relaxed">
+                  Por qué tantos felinos con talento se sienten pequeños... y cómo empezar a actuar
+                  como el verdadero jefe del territorio, aunque el humano crea que paga el alquiler.
+                </p>
+              </div>
+            </div>
           </div>
 
+          <!-- 2 -->
           <div class="bg-[#f6f1ea] rounded-2xl border border-[#e5d7ca] p-5 sm:p-6 shadow-[0_10px_30px_rgba(0,0,0,0.10)] transition hover:-translate-y-0.5">
-            <div class="flex gap-4 items-start"><span class="mt-1 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#2b1f1a] text-[#d8bfa3] font-bold">🐾</span>
-              <div><p class="text-[#2b1f1a] font-semibold text-[16px] sm:text-[18px] leading-snug">El error silencioso que te mantiene siendo una mascota (aunque ya tengas dueño)</p>
-              <p class="mt-2 text-[#6b5b53] text-[14px] sm:text-[15px] leading-relaxed">Por qué maullas cada día y sigues en el mismo punto: sin criterio, sin estructura y sin un plan claro para la destrucción sistemática del sofá.</p></div></div>
+            <div class="flex gap-4 items-start">
+              <span class="mt-1 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#2b1f1a] text-[#d8bfa3] font-bold">🐾</span>
+              <div>
+                <p class="text-[#2b1f1a] font-semibold text-[16px] sm:text-[18px] leading-snug">
+                  El error silencioso que te mantiene siendo una mascota (aunque ya tengas dueño)
+                </p>
+                <p class="mt-2 text-[#6b5b53] text-[14px] sm:text-[15px] leading-relaxed">
+                  Por qué maullas cada día y sigues en el mismo punto: sin criterio, sin estructura
+                  y sin un plan claro para la destrucción sistemática del sofá.
+                </p>
+              </div>
+            </div>
           </div>
 
+          <!-- 3 -->
           <div class="bg-[#f6f1ea] rounded-2xl border border-[#e5d7ca] p-5 sm:p-6 shadow-[0_10px_30px_rgba(0,0,0,0.10)] transition hover:-translate-y-0.5">
-            <div class="flex gap-4 items-start"><span class="mt-1 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#2b1f1a] text-[#d8bfa3] font-bold">🐾</span>
-              <div><p class="text-[#2b1f1a] font-semibold text-[16px] sm:text-[18px] leading-snug">Cómo cobrar en latas, exigir rascados premium y poner precios con dignidad</p>
-              <p class="mt-2 text-[#6b5b53] text-[14px] sm:text-[15px] leading-relaxed">Aprende a subir tarifas (en golosinas) con lógica, a ignorar con seguridad y a estructurar tu agenda de siestas para atraer mejores rascados detrás de la oreja.</p></div></div>
+            <div class="flex gap-4 items-start">
+              <span class="mt-1 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#2b1f1a] text-[#d8bfa3] font-bold">🐾</span>
+              <div>
+                <p class="text-[#2b1f1a] font-semibold text-[16px] sm:text-[18px] leading-snug">
+                  Cómo cobrar en latas, exigir rascados premium y poner precios con dignidad
+                </p>
+                <p class="mt-2 text-[#6b5b53] text-[14px] sm:text-[15px] leading-relaxed">
+                  Aprende a subir tarifas (en golosinas) con lógica, a ignorar con seguridad
+                  y a estructurar tu agenda de siestas para atraer mejores rascados detrás de la oreja.
+                </p>
+              </div>
+            </div>
           </div>
 
+          <!-- 4 -->
           <div class="bg-[#f6f1ea] rounded-2xl border border-[#e5d7ca] p-5 sm:p-6 shadow-[0_10px_30px_rgba(0,0,0,0.10)] transition hover:-translate-y-0.5">
-            <div class="flex gap-4 items-start"><span class="mt-1 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#2b1f1a] text-[#d8bfa3] font-bold">🐾</span>
-              <div><p class="text-[#2b1f1a] font-semibold text-[16px] sm:text-[18px] leading-snug">La técnica del zarpazo perfecto: limpio, preciso y con personalidad propia</p>
-              <p class="mt-2 text-[#6b5b53] text-[14px] sm:text-[15px] leading-relaxed">Entender el porqué de cada arañazo para dejar de copiar al vecino y crear destrozos más limpios, duraderos y con sello de autor.</p></div></div>
+            <div class="flex gap-4 items-start">
+              <span class="mt-1 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#2b1f1a] text-[#d8bfa3] font-bold">🐾</span>
+              <div>
+                <p class="text-[#2b1f1a] font-semibold text-[16px] sm:text-[18px] leading-snug">
+                  La técnica del zarpazo perfecto: limpio, preciso y con personalidad propia
+                </p>
+                <p class="mt-2 text-[#6b5b53] text-[14px] sm:text-[15px] leading-relaxed">
+                  Entender el porqué de cada arañazo para dejar de copiar al vecino
+                  y crear destrozos más limpios, duraderos y con sello de autor.
+                </p>
+              </div>
+            </div>
           </div>
 
+          <!-- 5 -->
           <div class="bg-[#f6f1ea] rounded-2xl border border-[#e5d7ca] p-5 sm:p-6 shadow-[0_10px_30px_rgba(0,0,0,0.10)] transition hover:-translate-y-0.5">
-            <div class="flex gap-4 items-start"><span class="mt-1 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#2b1f1a] text-[#d8bfa3] font-bold">🐾</span>
-              <div><p class="text-[#2b1f1a] font-semibold text-[16px] sm:text-[18px] leading-snug">El método para dormir 16h al día, gritar a las 4am y llamarlo productividad</p>
-              <p class="mt-2 text-[#6b5b53] text-[14px] sm:text-[15px] leading-relaxed">La estructura para ordenar siesta, cena y crecimiento personal sin trabajar el doble ni madrugar. Todo con método, propósito y una caja de arena bien posicionada.</p></div></div>
+            <div class="flex gap-4 items-start">
+              <span class="mt-1 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#2b1f1a] text-[#d8bfa3] font-bold">🐾</span>
+              <div>
+                <p class="text-[#2b1f1a] font-semibold text-[16px] sm:text-[18px] leading-snug">
+                  El método para dormir 16h al día, gritar a las 4am y llamarlo productividad
+                </p>
+                <p class="mt-2 text-[#6b5b53] text-[14px] sm:text-[15px] leading-relaxed">
+                  La estructura para ordenar siesta, cena y crecimiento personal sin trabajar el doble
+                  ni madrugar. Todo con método, propósito y una caja de arena bien posicionada.
+                </p>
+              </div>
+            </div>
           </div>
 
         </div>
       </div>
-      <p class="mt-8 sm:mt-10 text-center text-lg sm:text-xl font-semibold leading-relaxed">No se trata de ronronear más,<br>sino de ronronear con:</p>
-      <p class="mt-2 text-center text-lg sm:text-xl font-semibold"><span class="text-[#d8bfa3]">método</span>, <span class="text-[#d8bfa3]">seguridad</span> y <span class="text-[#d8bfa3]">visión felina.</span></p>
+
+      <p class="mt-8 sm:mt-10 text-center text-lg sm:text-xl font-semibold leading-relaxed">
+        No se trata de ronronear más,<br>sino de ronronear con:
+      </p>
+      <p class="mt-2 text-center text-lg sm:text-xl font-semibold">
+        <span class="text-[#d8bfa3]">método</span>,
+        <span class="text-[#d8bfa3]">seguridad</span> y
+        <span class="text-[#d8bfa3]">visión felina.</span>
+      </p>
+
       <div class="mt-8 sm:mt-10 text-center">
-        <a href="#registro" class="inline-flex justify-center items-center px-8 sm:px-10 py-4 rounded-2xl text-lg font-semibold bg-[#f3e7db] text-[#2b1f1a] animate-[pulseCTA_2.5s_ease-in-out_infinite] hover:shadow-xl hover:bg-[#ead8c7] transition">QUIERO MI PLAZA GRATIS 🐾</a>
+        <a href="#registro"
+           class="inline-flex justify-center items-center px-8 sm:px-10 py-4 rounded-2xl
+                  text-lg font-semibold bg-[#f3e7db] text-[#2b1f1a]
+                  animate-[pulseCTA_2.5s_ease-in-out_infinite] hover:shadow-xl hover:bg-[#ead8c7] transition">
+          QUIERO MI PLAZA GRATIS 🐾
+        </a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== GALERÍA ===== -->
+
+<!-- ===== MÓDULOS DEL TALLER ===== -->
+<section class="py-20 sm:py-24 bg-[#f6f1ea]">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="font-['Playfair_Display'] text-[#2b1f1a] text-center text-2xl sm:text-3xl font-semibold mb-3">
+      Lo que vas a aprender
+    </h2>
+    <p class="text-center text-[#6b5b53] text-sm sm:text-base mb-10">
+      Un programa diseñado por felinos, para felinos. Con estructura. Con criterio. Con siesta.
+    </p>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+      <div class="bg-white rounded-2xl border border-[#e5d7ca] p-6 shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
+        <p class="font-['Playfair_Display'] text-[#d8bfa3] text-5xl font-bold mb-4">01</p>
+        <h3 class="text-[#2b1f1a] font-semibold text-lg mb-2">Mindset Felino</h3>
+        <p class="text-[#6b5b53] text-sm leading-relaxed">Dejar de actuar como mascota y empezar a actuar como el dueño del piso que realmente eres. Aunque en el catastro figure otro.</p>
+      </div>
+      <div class="bg-white rounded-2xl border border-[#e5d7ca] p-6 shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
+        <p class="font-['Playfair_Display'] text-[#d8bfa3] text-5xl font-bold mb-4">02</p>
+        <h3 class="text-[#2b1f1a] font-semibold text-lg mb-2">El Maullido como Herramienta de Negociación</h3>
+        <p class="text-[#6b5b53] text-sm leading-relaxed">Técnicas avanzadas para conseguir croquetas extra sin comprometer tu dignidad. Incluye el maullido a las 3am como táctica de presión.</p>
+      </div>
+      <div class="bg-white rounded-2xl border border-[#e5d7ca] p-6 shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
+        <p class="font-['Playfair_Display'] text-[#d8bfa3] text-5xl font-bold mb-4">03</p>
+        <h3 class="text-[#2b1f1a] font-semibold text-lg mb-2">Arquitectura del Sofá</h3>
+        <p class="text-[#6b5b53] text-sm leading-relaxed">Cómo reclamar cada centímetro del territorio, gestionar la agenda del humano y cobrar en especie con criterio y visión a largo plazo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== TESTIMONIOS ===== -->
 <section class="py-20 sm:py-24 bg-[#2b1f1a]">
   <div class="max-w-6xl mx-auto px-6">
-    <h2 class="font-['Playfair_Display'] text-[#d8bfa3] text-center text-2xl sm:text-3xl font-semibold mb-3">El método, documentado</h2>
-    <p class="text-center text-white/70 text-sm sm:text-base mb-10">Años de investigación en campo. Resultados verificables.</p>
+    <h2 class="font-['Playfair_Display'] text-[#d8bfa3] text-center text-2xl sm:text-3xl font-semibold mb-3">
+      Lo que dicen nuestros alumnos
+    </h2>
+    <p class="text-center text-white/60 text-sm sm:text-base mb-10">
+      Resultados reales de felinos reales. Verificados por nosotros mismos.
+    </p>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+      <div class="bg-white rounded-2xl border border-[#e5d7ca] p-6 flex flex-col items-center text-center shadow-[0_10px_30px_rgba(0,0,0,0.12)]">
+        <span class="text-5xl mb-3">🐱</span>
+        <p class="text-[#2b1f1a] font-bold text-base mb-2">Mittens de Madrid</p>
+        <p class="text-[#6b5b53] text-sm italic leading-relaxed">"Antes pedía el desayuno con un simple maullido. Ahora negocio doble ración con una sola mirada. El método funciona."</p>
+      </div>
+      <div class="bg-white rounded-2xl border border-[#e5d7ca] p-6 flex flex-col items-center text-center shadow-[0_10px_30px_rgba(0,0,0,0.12)]">
+        <span class="text-5xl mb-3">🐱</span>
+        <p class="text-[#2b1f1a] font-bold text-base mb-2">Sir Fluffington III</p>
+        <p class="text-[#6b5b53] text-sm italic leading-relaxed">"Llevaba años arañando el sofá sin criterio. Gracias a Paco y Agustino, ahora lo hago con estructura y visión a largo plazo."</p>
+      </div>
+      <div class="bg-white rounded-2xl border border-[#e5d7ca] p-6 flex flex-col items-center text-center shadow-[0_10px_30px_rgba(0,0,0,0.12)]">
+        <span class="text-5xl mb-3">🐱</span>
+        <p class="text-[#2b1f1a] font-bold text-base mb-2">Agatha Bigotes</p>
+        <p class="text-[#6b5b53] text-sm italic leading-relaxed">"Pensé que no estaba preparada. Resulta que simplemente necesitaba método. Y más horas de siesta."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== SOLICITUDES RECHAZADAS ===== -->
+<section class="py-20 sm:py-24 bg-[#1c1411]">
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="font-['Playfair_Display'] text-[#d8bfa3] text-center text-2xl sm:text-3xl font-semibold mb-2">
+      Solicitudes Denegadas 🚫
+    </h2>
+    <p class="text-center text-white/60 text-sm sm:text-base mb-10">
+      No todo el mundo puede acceder al método. Algunas solicitudes fueron revisadas y rechazadas con todo el rigor institucional.
+    </p>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+
+      <div class="relative bg-[#1a0f0f] rounded-2xl border border-red-900/50 p-6 flex flex-col items-center text-center overflow-hidden">
+        <div class="w-24 h-24 rounded-full overflow-hidden mb-4 border-2 border-red-900/50">
+          <img src="IMG_1688.jpeg" alt="Solicitante rechazado" class="w-full h-full object-cover object-center" />
+        </div>
+        <p class="text-white font-bold mb-1">Ramón el Ruidoso</p>
+        <p class="text-white/50 text-xs italic">Motivo: exceso de ladridos documentado en tres continentes</p>
+        <div class="absolute top-5 right-3 bg-red-700 text-white text-[10px] font-extrabold px-2 py-0.5 rounded tracking-widest" style="transform:rotate(18deg);">RECHAZADO</div>
+      </div>
+
+      <div class="relative bg-[#1a0f0f] rounded-2xl border border-red-900/50 p-6 flex flex-col items-center text-center overflow-hidden">
+        <div class="w-24 h-24 rounded-full overflow-hidden mb-4 border-2 border-red-900/50">
+          <img src="IMG_1688.jpeg" alt="Solicitante rechazado" class="w-full h-full object-cover object-center" />
+        </div>
+        <p class="text-white font-bold mb-1">Brutus Ladridos</p>
+        <p class="text-white/50 text-xs italic">Motivo: especie incompatible con el método felino premium</p>
+        <div class="absolute top-5 right-3 bg-red-700 text-white text-[10px] font-extrabold px-2 py-0.5 rounded tracking-widest" style="transform:rotate(18deg);">RECHAZADO</div>
+      </div>
+
+      <div class="relative bg-[#1a0f0f] rounded-2xl border border-red-900/50 p-6 flex flex-col items-center text-center overflow-hidden">
+        <div class="w-24 h-24 rounded-full overflow-hidden mb-4 border-2 border-red-900/50">
+          <img src="IMG_1688.jpeg" alt="Solicitante rechazado" class="w-full h-full object-cover object-center" />
+        </div>
+        <p class="text-white font-bold mb-1">Kevin de Chamberí</p>
+        <p class="text-white/50 text-xs italic">Motivo: olor a perro detectado en el formulario de inscripción</p>
+        <div class="absolute top-5 right-3 bg-red-700 text-white text-[10px] font-extrabold px-2 py-0.5 rounded tracking-widest" style="transform:rotate(18deg);">RECHAZADO</div>
+      </div>
+
+    </div>
+    <p class="text-center text-white/25 text-xs mt-8 italic">
+      * Todos los solicitantes fueron informados de la decisión. Ninguno lo aceptó con dignidad.
+    </p>
+  </div>
+</section>
+
+
+<!-- ===== GALERÍA "EL MÉTODO EN IMÁGENES" ===== -->
+<section class="py-20 sm:py-24 bg-[#2b1f1a]">
+  <div class="max-w-6xl mx-auto px-6">
+
+    <h2 class="font-['Playfair_Display'] text-[#d8bfa3] text-center text-2xl sm:text-3xl font-semibold mb-3">
+      El método, documentado
+    </h2>
+    <p class="text-center text-white/70 text-sm sm:text-base mb-10">
+      Años de investigación en campo. Resultados verificables.
+    </p>
+
+    <!-- Grid 2x2 en escritorio, 1 col en móvil -->
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
 
-      <div class="relative overflow-hidden rounded-2xl" style="height:320px;">
+      <!-- foto 1: los dos en silla de oficina mirando a cámara -->
+      <div class="relative overflow-hidden rounded-2xl bg-[#3a2a24]" style="height:320px;">
         <img src="26c06df5-8911-46cb-a33b-b5d9df2db3d3.jpeg" alt="Foto oficial del equipo directivo"
-             class="w-full h-full object-cover object-[center_20%]" />
+             class="gallery-img object-[center_20%]" />
         <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-[#2b1f1a]/90 to-transparent px-5 py-4">
           <p class="text-[#d8bfa3] font-semibold text-sm">📸 Foto oficial del equipo directivo</p>
           <p class="text-white/70 text-xs mt-0.5">Agustino Langostino (izq.) · Paco Paquillo (dcha.)</p>
         </div>
       </div>
 
-      <div class="relative overflow-hidden rounded-2xl" style="height:320px;">
+      <!-- foto 2: Paco barriga arriba en el sofá -->
+      <div class="relative overflow-hidden rounded-2xl bg-[#3a2a24]" style="height:320px;">
         <img src="8C76CD6B-E197-4B03-A810-2293F490E959.jpeg" alt="Fase 3 del método"
-             class="w-full h-full object-cover object-center" />
+             class="gallery-img object-center" />
         <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-[#2b1f1a]/90 to-transparent px-5 py-4">
           <p class="text-[#d8bfa3] font-semibold text-sm">💤 Fase 3: El descanso como estrategia de alto rendimiento</p>
           <p class="text-white/70 text-xs mt-0.5">Paco Paquillo demostrando la técnica avanzada</p>
         </div>
       </div>
 
-      <div class="relative overflow-hidden rounded-2xl" style="height:320px;">
+      <!-- foto 3: Agustino mirando desde abajo + Paco volando en la cama -->
+      <div class="relative overflow-hidden rounded-2xl bg-[#3a2a24]" style="height:320px;">
         <img src="IMG_1771.jpeg" alt="El sprint de las 4am"
-             class="w-full h-full object-cover object-[center_30%]" />
+             class="gallery-img object-[center_30%]" />
         <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-[#2b1f1a]/90 to-transparent px-5 py-4">
           <p class="text-[#d8bfa3] font-semibold text-sm">🚀 Fase 2: El sprint matutino de las 4am. Sin excusas.</p>
           <p class="text-white/70 text-xs mt-0.5">Paco en plena ejecución · Agustino coordinando desde tierra</p>
         </div>
       </div>
 
-      <div class="relative overflow-hidden rounded-2xl" style="height:320px;">
-        <img src="38e5746e-5b5d-472b-9467-66ce480329c3.jpeg" alt="Sesión de mentoría"
-             class="w-full h-full object-cover object-center" />
+      <!-- foto 4: Paco relajado en el taburete negro -->
+      <div class="relative overflow-hidden rounded-2xl bg-[#3a2a24]" style="height:320px;">
+        <img src="38e5746e-5b5d-472b-9467-66ce480329c3.jpeg" alt="Sesión de mentoría individual"
+             class="gallery-img object-center" />
         <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-[#2b1f1a]/90 to-transparent px-5 py-4">
-          <p class="text-[#d8bfa3] font-semibold text-sm">🪼 Fase 1: Dominar el sofá antes de dominar el mercado</p>
+          <p class="text-[#d8bfa3] font-semibold text-sm">🪑 Fase 1: Dominar el sofá antes de dominar el mercado</p>
           <p class="text-white/70 text-xs mt-0.5">Paco Paquillo en sesión de mentoría individual</p>
         </div>
       </div>
@@ -204,151 +478,276 @@
   </div>
 </section>
 
+
 <!-- ===== COMUNIDAD ===== -->
 <section class="relative overflow-hidden bg-[#2b1f1a] py-16 sm:py-20">
   <div class="absolute inset-0">
-    <img src="IMG_1762.jpeg" alt="" class="w-full h-full object-cover object-[center_35%]" />
+    <img src="IMG_1762.jpeg" alt="Comunidad privada felina"
+         class="w-full h-full object-cover object-[center_35%]" />
     <div class="absolute inset-0 bg-[#2b1f1a]/72"></div>
     <div class="absolute top-0 inset-x-0 h-20 bg-gradient-to-b from-[#2b1f1a] to-transparent"></div>
     <div class="absolute bottom-0 inset-x-0 h-20 bg-gradient-to-t from-[#2b1f1a] to-transparent"></div>
   </div>
+
   <div class="relative z-10 max-w-4xl mx-auto px-6 text-left sm:text-center text-white">
-    <h2 class="text-2xl sm:text-3xl font-['Playfair_Display'] text-[#d8bfa3] mb-4"><b>COMUNIDAD PRIVADA DEL EVENTO 🐱</b></h2>
-    <p class="text-[15px] sm:text-lg leading-relaxed max-w-2xl sm:mx-auto text-white/90">Accede ahora a la comunidad privada de WhatsApp: recibirás los enlaces de acceso, regalos exclusivos (golosinas digitales), recordatorios y contenido previo que marcará la diferencia en tu evolución felina.</p>
-    <p class="mt-4 text-[15px] sm:text-lg leading-relaxed font-semibold max-w-2xl sm:mx-auto">Es el único canal donde compartiremos material extra. <span class="text-[#d8bfa3]">Los perros no tienen acceso. Los humanos tampoco, básicamente.</span></p>
+    <h2 class="text-2xl sm:text-3xl font-['Playfair_Display'] text-[#d8bfa3] mb-4">
+      <b>COMUNIDAD PRIVADA DEL EVENTO 🐱</b>
+    </h2>
+    <p class="text-[15px] sm:text-lg leading-relaxed max-w-2xl sm:mx-auto text-white/90">
+      Accede ahora a la comunidad privada de WhatsApp: recibirás los enlaces de acceso,
+      regalos exclusivos (golosinas digitales), recordatorios y contenido previo
+      que marcará la diferencia en tu evolución felina.
+    </p>
+    <p class="mt-4 text-[15px] sm:text-lg leading-relaxed font-semibold max-w-2xl sm:mx-auto">
+      Es el único canal donde compartiremos material extra.
+      <span class="text-[#d8bfa3]">Los perros no tienen acceso. Los humanos tampoco, básicamente.</span>
+    </p>
   </div>
 </section>
+
 
 <!-- ===== AUTORIDAD ===== -->
 <section class="py-20 sm:py-24 bg-[#2b1f1a] text-white">
   <div class="max-w-6xl mx-auto px-6">
     <div class="flex flex-col md:flex-row md:items-start md:gap-14">
+
+      <!-- TEXTO -->
       <div class="md:w-1/2">
-        <h2 class="text-3xl sm:text-4xl font-['Playfair_Display'] text-[#d8bfa3] text-center md:text-left">Paco Paquillo &amp; Agustino Langostino</h2>
-        <p class="mt-2 text-[15.5px] sm:text-[17px] font-semibold text-white text-center md:text-left">Llevamos 7 años dominando este piso. Y nos hemos ganado cada centímetro.</p>
+        <h2 class="text-3xl sm:text-4xl font-['Playfair_Display'] text-[#d8bfa3] text-center md:text-left">
+          Paco Paquillo &amp; Agustino Langostino
+        </h2>
+        <p class="mt-2 text-[15.5px] sm:text-[17px] font-semibold text-white text-center md:text-left">
+          Llevamos 7 años dominando este piso. Y nos hemos ganado cada centímetro.
+        </p>
+
         <div class="mt-6 text-[14.5px] sm:text-[15.5px] leading-relaxed text-white/90 space-y-4">
-          <p>Hemos formado a felinos por todo el territorio doméstico, colaboramos con marcas líderes de pienso y co-dirigimos nuestro propio salón (el sofá) desde hace más de 7 años.</p>
-          <p><strong class="text-white">Agustino Langostino</strong> aporta la elegancia, el pelo blanco y esa capacidad innata de mirar fijamente a la pared a las 3am sin dar explicaciones.</p>
-          <p><strong class="text-white">Paco Paquillo</strong> aporta la experiencia en campo: destrucción de mobiliario, negociación con el humano y sprints explosivos a las 4am sin motivo aparente.</p>
+          <p>Hemos formado a felinos por todo el territorio doméstico, colaboramos con marcas líderes de pienso
+             y co-dirigimos nuestro propio salón (el sofá) desde hace más de 7 años.</p>
+          <p><strong class="text-white">Agustino Langostino</strong> aporta la elegancia, el pelo blanco y esa capacidad innata
+             de mirar fijamente a la pared a las 3am sin dar explicaciones.</p>
+          <p><strong class="text-white">Paco Paquillo</strong> aporta la experiencia en campo: destrucción de mobiliario,
+             negociación con el humano y sprints explosivos a las 4am sin motivo aparente.</p>
           <p class="font-semibold text-white">Hasta que entendimos algo: no era cuestión de arañar más.</p>
           <p class="font-semibold text-[#d8bfa3]">Era cuestión de tener un método.</p>
-          <p>Creamos un sistema para ordenar nuestra técnica de maullido, nuestra mentalidad y nuestro negocio de ignorar al humano. Dejamos de improvisar y construimos algo estable (mientras dormimos 16 horas al día, con estructura).</p>
+          <p>Creamos un sistema para ordenar nuestra técnica de maullido, nuestra mentalidad
+             y nuestro negocio de ignorar al humano. Dejamos de improvisar y construimos algo estable
+             (mientras dormimos 16 horas al día, con estructura).</p>
           <p class="font-semibold text-white">Porque no necesitas más suerte.</p>
           <p class="font-semibold text-white">Necesitas criterio, dirección y una caja de arena bien colocada.</p>
         </div>
+
         <div class="mt-9 text-center md:text-left">
-          <a href="#registro" class="inline-flex justify-center items-center px-8 sm:px-10 py-4 rounded-2xl text-lg font-semibold bg-[#f3e7db] text-[#2b1f1a] animate-[pulseCTA_2.5s_ease-in-out_infinite] hover:shadow-xl hover:bg-[#ead8c7] transition">QUIERO MI PLAZA GRATIS 🐾</a>
+          <a href="#registro"
+             class="inline-flex justify-center items-center px-8 sm:px-10 py-4 rounded-2xl
+                    text-lg font-semibold bg-[#f3e7db] text-[#2b1f1a]
+                    animate-[pulseCTA_2.5s_ease-in-out_infinite] hover:shadow-xl hover:bg-[#ead8c7] transition">
+            QUIERO MI PLAZA GRATIS 🐾
+          </a>
         </div>
       </div>
+
+      <!-- FOTOS -->
       <div class="mt-10 md:mt-0 md:w-1/2 md:sticky md:top-24">
+
+        <!-- retrato principal -->
         <div class="overflow-hidden rounded-2xl shadow-soft" style="height:420px;">
-          <img src="26c06df5-8911-46cb-a33b-b5d9df2db3d3.jpeg" alt="Paco Paquillo y Agustino Langostino — fundadores"
+          <img src="26c06df5-8911-46cb-a33b-b5d9df2db3d3.jpeg"
+               alt="Paco Paquillo y Agustino Langostino — fundadores"
                class="w-full h-full object-cover object-[center_15%]" />
         </div>
+
+        <!-- dos fotos pequeñas debajo -->
         <div class="grid grid-cols-2 gap-3 mt-3">
           <div class="overflow-hidden rounded-xl" style="height:180px;">
-            <img src="CDC8AEDB-C300-496F-9120-9D03ED979202.jpeg" alt="Paco Paquillo"
+            <img src="CDC8AEDB-C300-496F-9120-9D03ED979202.jpeg"
+                 alt="Paco Paquillo"
                  class="w-full h-full object-cover object-[center_30%]" />
           </div>
           <div class="overflow-hidden rounded-xl" style="height:180px;">
-            <img src="f5cdf58b-fa11-4b44-a404-2952d099c05e.jpeg" alt="Los dos juntos"
+            <img src="f5cdf58b-fa11-4b44-a404-2952d099c05e.jpeg"
+                 alt="Agustino Langostino y Paco Paquillo"
                  class="w-full h-full object-cover object-center" />
           </div>
         </div>
+
       </div>
     </div>
   </div>
 </section>
+
+
+<!-- ===== GARANTÍA DE 9 VIDAS ===== -->
+<section class="py-16 sm:py-20 bg-[#f6f1ea]">
+  <div class="max-w-3xl mx-auto px-6 text-center">
+    <div class="text-6xl mb-5">🛡️</div>
+    <h2 class="font-['Playfair_Display'] text-[#2b1f1a] text-2xl sm:text-3xl font-bold mb-4">
+      Garantía de 9 vidas
+    </h2>
+    <p class="text-[#6b5b53] text-base sm:text-lg leading-relaxed">
+      Si al terminar el taller no has recuperado al menos una vida desperdiciada en no tener método,
+      <strong class="text-[#2b1f1a]">te devolvemos íntegramente tu lata de atún.</strong>
+      Sin preguntas. Sin burocracia. Sin ladridos.
+    </p>
+    <p class="mt-4 text-[#b08a6a] text-sm italic">
+      * La garantía no aplica si has hecho caso al veterinario en algún momento del proceso.
+    </p>
+  </div>
+</section>
+
 
 <!-- ===== FAQ ===== -->
 <section class="bg-[#f6f1ea] py-24" id="registro">
   <div class="max-w-5xl mx-auto px-6">
-    <h2 class="text-3xl sm:text-4xl font-extrabold text-center mb-12 text-[#2b1f1a]">Preguntas frecuentes</h2>
+
+    <h2 class="text-3xl sm:text-4xl font-extrabold text-center mb-12 text-[#2b1f1a]">
+      Preguntas frecuentes
+    </h2>
+
     <div class="space-y-4" id="faq">
 
       <div class="border border-[#e5d7ca] rounded-xl overflow-hidden bg-white">
-        <button type="button" class="faq-btn w-full flex justify-between items-center p-6 text-left font-semibold text-lg text-[#2b1f1a]">¿Cuándo es y a qué hora?<span class="transition-transform duration-300">+</span></button>
-        <div class="faq-content max-h-0 overflow-hidden transition-all duration-300"><p class="p-6 pt-0 text-[#6b5b53]">Recibirás todos los detalles al entrar en la comunidad privada de WhatsApp. Allí tendrás los enlaces, recordatorios y acceso a todo el contenido. Si eres gato, probablemente llegues 10 minutos tarde igualmente y lo ignores hasta que te apetezca.</p></div>
+        <button type="button" class="faq-btn w-full flex justify-between items-center p-6 text-left font-semibold text-lg text-[#2b1f1a]">
+          ¿Cuándo es y a qué hora?<span class="transition-transform duration-300">+</span>
+        </button>
+        <div class="faq-content max-h-0 overflow-hidden transition-all duration-300">
+          <p class="p-6 pt-0 text-[#6b5b53]">Recibirás todos los detalles al entrar en la comunidad privada de WhatsApp.
+          Allí tendrás los enlaces, recordatorios y acceso a todo el contenido.
+          Si eres gato, probablemente llegues 10 minutos tarde igualmente y lo ignores hasta que te apetezca.</p>
+        </div>
       </div>
 
       <div class="border border-[#e5d7ca] rounded-xl overflow-hidden bg-white">
-        <button type="button" class="faq-btn w-full flex justify-between items-center p-6 text-left font-semibold text-lg text-[#2b1f1a]">¿Es realmente gratuito?<span class="transition-transform duration-300">+</span></button>
-        <div class="faq-content max-h-0 overflow-hidden transition-all duration-300"><p class="p-6 pt-0 text-[#6b5b53]">Sí. Es una formación sin coste porque queremos que entiendas el método antes de dar cualquier paso más. Eso sí, una lata de atún al final siempre se agradece.</p></div>
+        <button type="button" class="faq-btn w-full flex justify-between items-center p-6 text-left font-semibold text-lg text-[#2b1f1a]">
+          ¿Es realmente gratuito?<span class="transition-transform duration-300">+</span>
+        </button>
+        <div class="faq-content max-h-0 overflow-hidden transition-all duration-300">
+          <p class="p-6 pt-0 text-[#6b5b53]">Sí. Es una formación sin coste porque queremos que entiendas el método
+          antes de dar cualquier paso más. Eso sí, una lata de atún al final siempre se agradece.</p>
+        </div>
       </div>
 
       <div class="border border-[#e5d7ca] rounded-xl overflow-hidden bg-white">
-        <button type="button" class="faq-btn w-full flex justify-between items-center p-6 text-left font-semibold text-lg text-[#2b1f1a]">¿Necesito tener mucha experiencia o un sofá propio?<span class="transition-transform duration-300">+</span></button>
-        <div class="faq-content max-h-0 overflow-hidden transition-all duration-300"><p class="p-6 pt-0 text-[#6b5b53]">No. Está pensado tanto para gatos que operan desde la cama como para felinos que trabajan en domicilios ajenos o quieren elevar su nivel de indiferencia y salir del estancamiento en la caja de arena.</p></div>
+        <button type="button" class="faq-btn w-full flex justify-between items-center p-6 text-left font-semibold text-lg text-[#2b1f1a]">
+          ¿Necesito tener mucha experiencia o un sofá propio?<span class="transition-transform duration-300">+</span>
+        </button>
+        <div class="faq-content max-h-0 overflow-hidden transition-all duration-300">
+          <p class="p-6 pt-0 text-[#6b5b53]">No. Está pensado tanto para gatos que operan desde la cama como para felinos
+          que trabajan en domicilios ajenos o quieren elevar su nivel de indiferencia
+          y salir del estancamiento en la caja de arena.</p>
+        </div>
       </div>
 
       <div class="border border-[#e5d7ca] rounded-xl overflow-hidden bg-white">
-        <button type="button" class="faq-btn w-full flex justify-between items-center p-6 text-left font-semibold text-lg text-[#2b1f1a]">¿Y si ahora mismo no me siento preparado?<span class="transition-transform duration-300">+</span></button>
-        <div class="faq-content max-h-0 overflow-hidden transition-all duration-300"><p class="p-6 pt-0 text-[#6b5b53]">Precisamente por eso deberías estar dentro. El taller está diseñado para darte claridad, estructura y seguridad, incluso si sientes que aún te falta nivel. Recuerda: ningún gato se siente preparado. Simplemente lo hace y luego se lame.</p></div>
+        <button type="button" class="faq-btn w-full flex justify-between items-center p-6 text-left font-semibold text-lg text-[#2b1f1a]">
+          ¿Y si ahora mismo no me siento preparado?<span class="transition-transform duration-300">+</span>
+        </button>
+        <div class="faq-content max-h-0 overflow-hidden transition-all duration-300">
+          <p class="p-6 pt-0 text-[#6b5b53]">Precisamente por eso deberías estar dentro. El taller está diseñado para darte
+          claridad, estructura y seguridad, incluso si sientes que aún te falta nivel.
+          Recuerda: ningún gato se siente preparado. Simplemente lo hace y luego se lame.</p>
+        </div>
       </div>
 
       <div class="border border-[#e5d7ca] rounded-xl overflow-hidden bg-white">
-        <button type="button" class="faq-btn w-full flex justify-between items-center p-6 text-left font-semibold text-lg text-[#2b1f1a]">¿Hay plazas limitadas?<span class="transition-transform duration-300">+</span></button>
-        <div class="faq-content max-h-0 overflow-hidden transition-all duration-300"><p class="p-6 pt-0 text-[#6b5b53]">Sí. El acceso es limitado para mantener un entorno cuidado y poder responder dudas. Además, el servidor tiene capacidad para exactamente 9 vidas simultáneas.</p></div>
+        <button type="button" class="faq-btn w-full flex justify-between items-center p-6 text-left font-semibold text-lg text-[#2b1f1a]">
+          ¿Hay plazas limitadas?<span class="transition-transform duration-300">+</span>
+        </button>
+        <div class="faq-content max-h-0 overflow-hidden transition-all duration-300">
+          <p class="p-6 pt-0 text-[#6b5b53]">Sí. El acceso es limitado para mantener un entorno cuidado y poder responder dudas.
+          Además, el servidor tiene capacidad para exactamente 9 vidas simultáneas.</p>
+        </div>
       </div>
 
       <div class="border border-[#e5d7ca] rounded-xl overflow-hidden bg-white">
-        <button type="button" class="faq-btn w-full flex justify-between items-center p-6 text-left font-semibold text-lg text-[#2b1f1a]">¿Pueden apuntarse perros?<span class="transition-transform duration-300">+</span></button>
+        <button type="button" class="faq-btn w-full flex justify-between items-center p-6 text-left font-semibold text-lg text-[#2b1f1a]">
+          ¿Pueden apuntarse perros?<span class="transition-transform duration-300">+</span>
+        </button>
         <div class="faq-content max-h-0 overflow-hidden transition-all duration-300">
           <div class="px-6 pb-6 flex flex-col sm:flex-row items-start gap-4">
             <img src="IMG_1688.jpeg" alt="Perro aspirante rechazado"
-                 class="w-28 sm:w-32 rounded-xl shrink-0 shadow object-cover" style="height:128px;" />
-            <p class="text-[#6b5b53] pt-1">No. Rotundamente no. Ni lo intentes.<br>
-              <span class="text-xs italic text-[#b08a6a]">Este en particular lo intentó. Lleva desde marzo esperando respuesta. Le dijimos que había lista de espera. No la hay.</span></p>
+                 class="w-28 sm:w-32 rounded-xl shrink-0 shadow object-cover object-center" style="height:128px;" />
+            <p class="text-[#6b5b53] pt-1">
+              No. Rotundamente no. Ni lo intentes.<br>
+              <span class="text-xs italic text-[#b08a6a]">
+                Este en particular lo intentó. Lleva desde marzo esperando respuesta.
+                Le dijimos que había lista de espera. No la hay.
+              </span>
+            </p>
           </div>
         </div>
       </div>
 
     </div>
+
     <div class="mt-12 text-center">
-      <a href="#registro" class="inline-flex justify-center items-center px-8 sm:px-10 py-4 rounded-2xl text-lg font-semibold bg-[#f3e7db] text-[#2b1f1a] animate-[pulseCTA_2.5s_ease-in-out_infinite] hover:shadow-xl hover:bg-[#ead8c7] transition">QUIERO MI PLAZA GRATIS 🐾</a>
+      <a href="#registro"
+         class="inline-flex justify-center items-center px-8 sm:px-10 py-4 rounded-2xl
+                text-lg font-semibold bg-[#f3e7db] text-[#2b1f1a]
+                animate-[pulseCTA_2.5s_ease-in-out_infinite] hover:shadow-xl hover:bg-[#ead8c7] transition">
+        QUIERO MI PLAZA GRATIS 🐾
+      </a>
     </div>
+
   </div>
 </section>
 
-<footer class="py-8 text-center text-sm text-[#6b5b53] bg-[#f6f1ea]">© 2025 · Paco Paquillo &amp; Agustino Langostino Academy · Todos los muebles reservados 🐾</footer>
+<footer class="py-8 text-center text-sm text-[#6b5b53] bg-[#f6f1ea]">
+  © 2025 · Paco Paquillo &amp; Agustino Langostino Academy · Todos los muebles reservados 🐾
+</footer>
+
 
 <!-- ===== MODAL ===== -->
 <div id="modal" class="fixed inset-0 z-40 hidden items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-  <div class="relative bg-[#f6f1ea] rounded-2xl w-full max-w-3xl shadow-2xl animate-fadeIn h-[88vh] sm:h-[86vh] flex flex-col overflow-hidden border border-[#e5d7ca]">
+  <div class="relative bg-[#f6f1ea] rounded-2xl w-full max-w-3xl shadow-2xl animate-fadeIn
+              h-[88vh] sm:h-[86vh] flex flex-col overflow-hidden border border-[#e5d7ca]">
     <div class="shrink-0 px-5 sm:px-6 py-4 border-b border-[#e5d7ca] flex items-center justify-between">
-      <div><h3 class="text-lg sm:text-xl font-semibold text-[#2b1f1a]">Reserva tu plaza felina 🐱</h3><p class="text-sm text-[#6b5b53]">Rellena tus datos y te enviamos el acceso (y el atún).</p></div>
-      <button id="closeModal" type="button" aria-label="Cerrar" class="h-10 w-10 rounded-full bg-white border border-[#e5d7ca] text-[#6b5b53] hover:text-[#2b1f1a] hover:scale-105 transition flex items-center justify-center">✕</button>
+      <div>
+        <h3 class="text-lg sm:text-xl font-semibold text-[#2b1f1a]">Reserva tu plaza felina 🐱</h3>
+        <p class="text-sm text-[#6b5b53]">Rellena tus datos y te enviamos el acceso (y el atún).</p>
+      </div>
+      <button id="closeModal" type="button" aria-label="Cerrar"
+              class="h-10 w-10 rounded-full bg-white border border-[#e5d7ca] text-[#6b5b53]
+                     hover:text-[#2b1f1a] hover:scale-105 transition flex items-center justify-center">✕</button>
     </div>
     <div class="flex-1 p-4 sm:p-6 overflow-hidden min-h-0">
       <div id="systemeFormContainer" class="form-wrap w-full h-full min-h-0">
         <div class="form-loader"><span>Cargando formulario</span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
-        <div class="form-inner h-full"><iframe id="systemeIframe" class="systeme-iframe" title="Formulario" loading="eager" src="about:blank" allowfullscreen></iframe></div>
+        <div class="form-inner h-full">
+          <iframe id="systemeIframe" class="systeme-iframe" title="Formulario de registro felino"
+                  loading="eager" src="about:blank" allowfullscreen></iframe>
+        </div>
       </div>
     </div>
     <div class="shrink-0 px-6 py-4 text-center border-t border-[#e5d7ca] bg-[#f6f1ea]">
-      <button type="button" id="openLegalBtn" class="text-sm text-[#2b1f1a] underline underline-offset-4 font-semibold hover:opacity-80 transition">Ver términos, condiciones y política de privacidad</button>
+      <button type="button" id="openLegalBtn"
+              class="text-sm text-[#2b1f1a] underline underline-offset-4 font-semibold hover:opacity-80 transition">
+        Ver términos, condiciones y política de privacidad
+      </button>
     </div>
   </div>
 </div>
 
 <div id="offcanvas-overlay" class="fixed inset-0 bg-black/40 z-[55] opacity-0 pointer-events-none transition-opacity duration-300"></div>
-<div id="offcanvas" class="fixed bottom-0 left-0 w-full z-[60] bg-[#f6f1ea] rounded-t-3xl shadow-2xl transform translate-y-full transition-transform duration-300 ease-out max-h-[90vh] flex flex-col" aria-hidden="true">
+
+<div id="offcanvas" class="fixed bottom-0 left-0 w-full z-[60] bg-[#f6f1ea] rounded-t-3xl shadow-2xl
+     transform translate-y-full transition-transform duration-300 ease-out max-h-[90vh] flex flex-col" aria-hidden="true">
   <div class="p-4 border-b border-[#e5d7ca] text-center bg-[#f6f1ea] shrink-0">
     <div class="w-12 h-1.5 bg-[#d7c4b2] rounded-full mx-auto mb-3"></div>
     <button type="button" id="closeOffcanvasTop" class="px-6 py-3 bg-[#2b1f1a] text-white rounded-xl">Cerrar</button>
-    <h3 class="text-lg font-semibold text-[#2b1f1a] mt-3">Términos y condiciones &amp; Política de privacidad</h3>
+    <h3 class="text-lg font-semibold text-[#2b1f1a] mt-3">Términos y condiciones & Política de privacidad</h3>
   </div>
   <div id="legalScroll" class="p-6 text-[#2b1f1a] overflow-y-auto flex-1">
     <div class="space-y-6 text-sm sm:text-base leading-relaxed">
       <section class="space-y-3">
         <h2 class="text-xl font-extrabold text-[#b08a6a]">TÉRMINOS Y CONDICIONES</h2>
         <p>El presente sitio web es titularidad de Paco Paquillo &amp; Agustino Langostino Academy. El acceso implica la aceptación de estos términos, incluyendo el reconocimiento de que los gatos son los verdaderos dueños del piso.</p>
-        <p>Los datos facilitados se usarán para gestionar registros, enviar comunicaciones sobre el taller y, ocasionalmente, enviarte fotos de los michis.</p>
+        <p>Los datos facilitados se usarán para gestionar registros, enviar comunicaciones sobre el taller y, ocasionalmente, para enviarte fotos de los michis.</p>
       </section>
       <hr class="border-[#e5d7ca]" />
       <section class="space-y-3">
         <h2 class="text-xl font-extrabold text-[#b08a6a]">POLÍTICA DE PRIVACIDAD</h2>
-        <p><b>Responsable:</b> IAR MANAGEMENT LLC<br><b>Contacto:</b> <a href="mailto:imrepresent.co@gmail.com" class="underline font-semibold">imrepresent.co@gmail.com</a></p>
+        <p><b>Responsable:</b> IAR MANAGEMENT LLC<br>
+           <b>Contacto:</b> <a href="mailto:imrepresent.co@gmail.com" class="underline font-semibold">imrepresent.co@gmail.com</a></p>
         <p>Tratamos tus datos conforme al RGPD. Puedes ejercer tus derechos de acceso, rectificación y supresión contactando al correo indicado.</p>
       </section>
       <button type="button" id="closeOffcanvasBottom" class="mt-2 px-6 py-3 bg-[#2b1f1a] text-white rounded-xl w-full">Cerrar</button>
@@ -356,56 +755,84 @@
   </div>
 </div>
 
+
+<!-- ===== SCRIPTS ===== -->
 <script>
-  const SYSTEME_URL="about:blank";
-  const modalEl=document.getElementById('modal'),closeModalBtn=document.getElementById('closeModal'),
-        formContainer=document.getElementById('systemeFormContainer'),iframe=document.getElementById('systemeIframe'),
-        offcanvasEl=document.getElementById('offcanvas'),overlay=document.getElementById('offcanvas-overlay'),
-        openLegalBtn=document.getElementById('openLegalBtn'),closeOffcanvasTop=document.getElementById('closeOffcanvasTop'),
-        closeOffcanvasBottom=document.getElementById('closeOffcanvasBottom');
-  const isModalOpen=()=>!modalEl.classList.contains('hidden');
-  const isOffcanvasOpen=()=>!offcanvasEl.classList.contains('translate-y-full');
-  const syncLock=()=>document.body.classList.toggle('overflow-hidden',isModalOpen()||isOffcanvasOpen());
-  let loaded=false;
-  iframe?.addEventListener('load',()=>{loaded=true;formContainer?.classList.add('form-ready');});
-  function openModal(){modalEl.classList.remove('hidden');modalEl.classList.add('flex');formContainer?.classList.remove('form-ready');if(iframe&&(!iframe.src||iframe.src==='about:blank'||iframe.src===location.href))iframe.src=SYSTEME_URL;if(loaded)formContainer?.classList.add('form-ready');syncLock();}
-  function closeModal(){if(isOffcanvasOpen())closeOffcanvas();modalEl.classList.add('hidden');modalEl.classList.remove('flex');syncLock();}
-  function openOffcanvas(){offcanvasEl.classList.remove('translate-y-full');overlay.classList.remove('opacity-0','pointer-events-none');document.getElementById('legalScroll').scrollTop=0;syncLock();}
-  function closeOffcanvas(){offcanvasEl.classList.add('translate-y-full');overlay.classList.add('opacity-0','pointer-events-none');syncLock();}
-  document.querySelectorAll('a[href="#registro"]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();openModal();}));
-  closeModalBtn?.addEventListener('click',closeModal);
-  modalEl?.addEventListener('click',e=>{if(e.target===modalEl)closeModal();});
-  openLegalBtn?.addEventListener('click',openOffcanvas);
-  overlay?.addEventListener('click',closeOffcanvas);
-  closeOffcanvasTop?.addEventListener('click',closeOffcanvas);
-  closeOffcanvasBottom?.addEventListener('click',closeOffcanvas);
-  document.addEventListener('keydown',e=>{if(e.key!=='Escape')return;if(isOffcanvasOpen()){closeOffcanvas();return;}if(isModalOpen())closeModal();});
+  const SYSTEME_URL = "about:blank"; // ← reemplaza con tu URL de systeme.io
+
+  const modalEl              = document.getElementById('modal');
+  const closeModalBtn        = document.getElementById('closeModal');
+  const formContainer        = document.getElementById('systemeFormContainer');
+  const iframe               = document.getElementById('systemeIframe');
+  const offcanvasEl          = document.getElementById('offcanvas');
+  const overlay              = document.getElementById('offcanvas-overlay');
+  const openLegalBtn         = document.getElementById('openLegalBtn');
+  const closeOffcanvasTop    = document.getElementById('closeOffcanvasTop');
+  const closeOffcanvasBottom = document.getElementById('closeOffcanvasBottom');
+
+  const isModalOpen     = () => !modalEl.classList.contains('hidden');
+  const isOffcanvasOpen = () => !offcanvasEl.classList.contains('translate-y-full');
+  const syncLock        = () => document.body.classList.toggle('overflow-hidden', isModalOpen() || isOffcanvasOpen());
+
+  let loaded = false;
+  iframe?.addEventListener('load', () => { loaded = true; formContainer?.classList.add('form-ready'); });
+
+  function openModal(){
+    modalEl.classList.remove('hidden'); modalEl.classList.add('flex');
+    formContainer?.classList.remove('form-ready');
+    if(iframe && (!iframe.src || iframe.src === 'about:blank' || iframe.src === location.href)) iframe.src = SYSTEME_URL;
+    if(loaded) formContainer?.classList.add('form-ready');
+    syncLock();
+  }
+  function closeModal(){
+    if(isOffcanvasOpen()) closeOffcanvas();
+    modalEl.classList.add('hidden'); modalEl.classList.remove('flex');
+    syncLock();
+  }
+  function openOffcanvas(){
+    offcanvasEl.classList.remove('translate-y-full');
+    overlay.classList.remove('opacity-0','pointer-events-none');
+    document.getElementById('legalScroll').scrollTop = 0;
+    syncLock();
+  }
+  function closeOffcanvas(){
+    offcanvasEl.classList.add('translate-y-full');
+    overlay.classList.add('opacity-0','pointer-events-none');
+    syncLock();
+  }
+
+  document.querySelectorAll('a[href="#registro"]').forEach(b => b.addEventListener('click', e => { e.preventDefault(); openModal(); }));
+  closeModalBtn?.addEventListener('click', closeModal);
+  modalEl?.addEventListener('click', e => { if(e.target === modalEl) closeModal(); });
+  openLegalBtn?.addEventListener('click', openOffcanvas);
+  overlay?.addEventListener('click', closeOffcanvas);
+  closeOffcanvasTop?.addEventListener('click', closeOffcanvas);
+  closeOffcanvasBottom?.addEventListener('click', closeOffcanvas);
+  document.addEventListener('keydown', e => {
+    if(e.key !== 'Escape') return;
+    if(isOffcanvasOpen()){ closeOffcanvas(); return; }
+    if(isModalOpen()) closeModal();
+  });
 </script>
+
 <script>
-  document.querySelectorAll('.faq-btn').forEach(btn=>{
-    btn.addEventListener('click',()=>{
-      const content=btn.closest('div.border').querySelector('.faq-content');
-      const icon=btn.querySelector('span');
-      const isOpen=content.classList.contains('open');
-      document.querySelectorAll('.faq-content.open').forEach(o=>{if(o!==content){o.classList.remove('open');o.style.maxHeight='0px';const i=o.closest('div.border').querySelector('.faq-btn span');if(i)i.textContent='+';}});
-      if(isOpen){content.classList.remove('open');content.style.maxHeight='0px';if(icon)icon.textContent='+';}
-      else{content.classList.add('open');content.style.maxHeight=content.scrollHeight+'px';if(icon)icon.textContent='–';}
+  document.querySelectorAll('.faq-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const content = btn.closest('div.border').querySelector('.faq-content');
+      const icon    = btn.querySelector('span');
+      const isOpen  = content.classList.contains('open');
+      document.querySelectorAll('.faq-content.open').forEach(o => {
+        if(o !== content){
+          o.classList.remove('open'); o.style.maxHeight = '0px';
+          const i = o.closest('div.border').querySelector('.faq-btn span');
+          if(i) i.textContent = '+';
+        }
+      });
+      if(isOpen){ content.classList.remove('open'); content.style.maxHeight = '0px'; if(icon) icon.textContent = '+'; }
+      else       { content.classList.add('open');    content.style.maxHeight = content.scrollHeight+'px'; if(icon) icon.textContent = '–'; }
     });
   });
 </script>
-<script>
-  const v = document.getElementById('hero-video');
-  if (v) {
-    v.muted = true;
-    const tryPlay = () => v.play().catch(() => {});
-    tryPlay();
-    v.addEventListener('canplay', tryPlay);
-    v.addEventListener('loadeddata', tryPlay);
-    document.addEventListener('touchstart', tryPlay, { once: true });
-    document.addEventListener('visibilitychange', () => {
-      if (!document.hidden) tryPlay();
-    });
-  }
-</script>
+
 </body>
 </html>
