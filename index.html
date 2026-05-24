@@ -61,9 +61,14 @@
       display:block; border-radius:.75rem;
     }
 
-    /* marquee */
+    /* marquee texto */
     @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
     .marquee-track{display:inline-block;white-space:nowrap;animation:marquee 24s linear infinite;}
+
+    /* marquee chihuahuas */
+    @keyframes chihuahua-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    .chihuahua-track{display:flex;width:max-content;animation:chihuahua-scroll 30s linear infinite;}
+    .chihuahua-track:hover{animation-play-state:paused;}
   </style>
 </head>
 
@@ -105,10 +110,12 @@
 <!-- ===== HERO ===== -->
 <section class="relative overflow-hidden bg-[#2b1f1a] text-white min-h-screen flex items-center">
 
-  <!-- foto de fondo: los dos gritando en el árbol -->
+  <!-- vídeo de fondo con foto como fallback -->
   <div class="absolute inset-0">
-    <img src="IMG_1704.jpeg" alt=""
-         class="w-full h-full object-cover object-[center_30%]" />
+    <video autoplay muted loop playsinline poster="IMG_1704.jpeg"
+           class="w-full h-full object-cover object-[center_30%]">
+      <source src="hero.mp4" type="video/mp4" />
+    </video>
     <div class="absolute inset-0 bg-[#1c1411]/72"></div>
   </div>
 
@@ -383,35 +390,157 @@
     <p class="text-center text-white/60 text-sm sm:text-base mb-10">
       No todo el mundo puede acceder al método. Algunas solicitudes fueron revisadas y rechazadas con todo el rigor institucional.
     </p>
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+    <!-- Marquee horizontal de expedientes rechazados -->
+    <div class="overflow-hidden">
+      <div class="chihuahua-track gap-5 px-2">
 
-      <div class="relative bg-[#1a0f0f] rounded-2xl border border-red-900/50 p-6 flex flex-col items-center text-center overflow-hidden">
-        <div class="w-24 h-24 rounded-full overflow-hidden mb-4 border-2 border-red-900/50">
-          <img src="Captura de pantalla 2026-05-24 a las 11.51.44.png" alt="Solicitante rechazado" class="w-full h-full object-cover object-center" />
+        <!-- set 1 -->
+        <div class="relative bg-[#1a0f0f] rounded-2xl border border-red-900/50 p-5 flex flex-col items-center text-center shrink-0 overflow-hidden" style="width:180px;">
+          <div class="w-20 h-20 rounded-full overflow-hidden mb-3 border-2 border-red-900/50">
+            <img src="Captura de pantalla 2026-05-24 a las 11.51.44.png" class="w-full h-full object-cover" />
+          </div>
+          <p class="text-white font-bold text-sm mb-1">Ramón el Ruidoso</p>
+          <p class="text-white/40 text-[10px] italic leading-snug">Ladridos en tres continentes</p>
+          <div class="absolute top-3 right-2 bg-red-700 text-white text-[9px] font-extrabold px-1.5 py-0.5 rounded tracking-widest" style="transform:rotate(18deg);">RECHAZADO</div>
         </div>
-        <p class="text-white font-bold mb-1">Ramón el Ruidoso</p>
-        <p class="text-white/50 text-xs italic">Motivo: exceso de ladridos documentado en tres continentes</p>
-        <div class="absolute top-5 right-3 bg-red-700 text-white text-[10px] font-extrabold px-2 py-0.5 rounded tracking-widest" style="transform:rotate(18deg);">RECHAZADO</div>
-      </div>
 
-      <div class="relative bg-[#1a0f0f] rounded-2xl border border-red-900/50 p-6 flex flex-col items-center text-center overflow-hidden">
-        <div class="w-24 h-24 rounded-full overflow-hidden mb-4 border-2 border-red-900/50">
-          <img src="Captura de pantalla 2026-05-24 a las 11.52.17.png" alt="Solicitante rechazado" class="w-full h-full object-cover object-center" />
+        <div class="relative bg-[#1a0f0f] rounded-2xl border border-red-900/50 p-5 flex flex-col items-center text-center shrink-0 overflow-hidden" style="width:180px;">
+          <div class="w-20 h-20 rounded-full overflow-hidden mb-3 border-2 border-red-900/50">
+            <img src="Captura de pantalla 2026-05-24 a las 11.52.03.png" class="w-full h-full object-cover" />
+          </div>
+          <p class="text-white font-bold text-sm mb-1">Brutus Ladridos</p>
+          <p class="text-white/40 text-[10px] italic leading-snug">Especie incompatible con el método</p>
+          <div class="absolute top-3 right-2 bg-red-700 text-white text-[9px] font-extrabold px-1.5 py-0.5 rounded tracking-widest" style="transform:rotate(18deg);">RECHAZADO</div>
         </div>
-        <p class="text-white font-bold mb-1">Brutus Ladridos</p>
-        <p class="text-white/50 text-xs italic">Motivo: especie incompatible con el método felino premium</p>
-        <div class="absolute top-5 right-3 bg-red-700 text-white text-[10px] font-extrabold px-2 py-0.5 rounded tracking-widest" style="transform:rotate(18deg);">RECHAZADO</div>
-      </div>
 
-      <div class="relative bg-[#1a0f0f] rounded-2xl border border-red-900/50 p-6 flex flex-col items-center text-center overflow-hidden">
-        <div class="w-24 h-24 rounded-full overflow-hidden mb-4 border-2 border-red-900/50">
-          <img src="Captura de pantalla 2026-05-24 a las 11.53.05.png" alt="Solicitante rechazado" class="w-full h-full object-cover object-center" />
+        <div class="relative bg-[#1a0f0f] rounded-2xl border border-red-900/50 p-5 flex flex-col items-center text-center shrink-0 overflow-hidden" style="width:180px;">
+          <div class="w-20 h-20 rounded-full overflow-hidden mb-3 border-2 border-red-900/50">
+            <img src="Captura de pantalla 2026-05-24 a las 11.52.17.png" class="w-full h-full object-cover" />
+          </div>
+          <p class="text-white font-bold text-sm mb-1">Kevin de Chamberí</p>
+          <p class="text-white/40 text-[10px] italic leading-snug">Olor a perro en el formulario</p>
+          <div class="absolute top-3 right-2 bg-red-700 text-white text-[9px] font-extrabold px-1.5 py-0.5 rounded tracking-widest" style="transform:rotate(18deg);">RECHAZADO</div>
         </div>
-        <p class="text-white font-bold mb-1">Kevin de Chamberí</p>
-        <p class="text-white/50 text-xs italic">Motivo: olor a perro detectado en el formulario de inscripción</p>
-        <div class="absolute top-5 right-3 bg-red-700 text-white text-[10px] font-extrabold px-2 py-0.5 rounded tracking-widest" style="transform:rotate(18deg);">RECHAZADO</div>
-      </div>
 
+        <div class="relative bg-[#1a0f0f] rounded-2xl border border-red-900/50 p-5 flex flex-col items-center text-center shrink-0 overflow-hidden" style="width:180px;">
+          <div class="w-20 h-20 rounded-full overflow-hidden mb-3 border-2 border-red-900/50">
+            <img src="Captura de pantalla 2026-05-24 a las 11.52.43.png" class="w-full h-full object-cover" />
+          </div>
+          <p class="text-white font-bold text-sm mb-1">Pepito Guauguau</p>
+          <p class="text-white/40 text-[10px] italic leading-snug">Se inscribió dos veces con distinto nombre</p>
+          <div class="absolute top-3 right-2 bg-red-700 text-white text-[9px] font-extrabold px-1.5 py-0.5 rounded tracking-widest" style="transform:rotate(18deg);">RECHAZADO</div>
+        </div>
+
+        <div class="relative bg-[#1a0f0f] rounded-2xl border border-red-900/50 p-5 flex flex-col items-center text-center shrink-0 overflow-hidden" style="width:180px;">
+          <div class="w-20 h-20 rounded-full overflow-hidden mb-3 border-2 border-red-900/50">
+            <img src="Captura de pantalla 2026-05-24 a las 11.52.54.png" class="w-full h-full object-cover" />
+          </div>
+          <p class="text-white font-bold text-sm mb-1">Lord Ladrón de Croquetas</p>
+          <p class="text-white/40 text-[10px] italic leading-snug">Robó croquetas durante la entrevista</p>
+          <div class="absolute top-3 right-2 bg-red-700 text-white text-[9px] font-extrabold px-1.5 py-0.5 rounded tracking-widest" style="transform:rotate(18deg);">RECHAZADO</div>
+        </div>
+
+        <div class="relative bg-[#1a0f0f] rounded-2xl border border-red-900/50 p-5 flex flex-col items-center text-center shrink-0 overflow-hidden" style="width:180px;">
+          <div class="w-20 h-20 rounded-full overflow-hidden mb-3 border-2 border-red-900/50">
+            <img src="Captura de pantalla 2026-05-24 a las 11.53.05.png" class="w-full h-full object-cover" />
+          </div>
+          <p class="text-white font-bold text-sm mb-1">El Peluchín Misterioso</p>
+          <p class="text-white/40 text-[10px] italic leading-snug">Evaluación: inapto para el silencio</p>
+          <div class="absolute top-3 right-2 bg-red-700 text-white text-[9px] font-extrabold px-1.5 py-0.5 rounded tracking-widest" style="transform:rotate(18deg);">RECHAZADO</div>
+        </div>
+
+        <div class="relative bg-[#1a0f0f] rounded-2xl border border-red-900/50 p-5 flex flex-col items-center text-center shrink-0 overflow-hidden" style="width:180px;">
+          <div class="w-20 h-20 rounded-full overflow-hidden mb-3 border-2 border-red-900/50">
+            <img src="Captura de pantalla 2026-05-24 a las 11.53.16.png" class="w-full h-full object-cover" />
+          </div>
+          <p class="text-white font-bold text-sm mb-1">Narciso de la Pata Izq.</p>
+          <p class="text-white/40 text-[10px] italic leading-snug">Destrozos sin estructura ni criterio</p>
+          <div class="absolute top-3 right-2 bg-red-700 text-white text-[9px] font-extrabold px-1.5 py-0.5 rounded tracking-widest" style="transform:rotate(18deg);">RECHAZADO</div>
+        </div>
+
+        <div class="relative bg-[#1a0f0f] rounded-2xl border border-red-900/50 p-5 flex flex-col items-center text-center shrink-0 overflow-hidden" style="width:180px;">
+          <div class="w-20 h-20 rounded-full overflow-hidden mb-3 border-2 border-red-900/50">
+            <img src="Captura de pantalla 2026-05-24 a las 11.53.26.png" class="w-full h-full object-cover" />
+          </div>
+          <p class="text-white font-bold text-sm mb-1">Wanda la Incontrolable</p>
+          <p class="text-white/40 text-[10px] italic leading-snug">Solicitó formación gratuita para perros</p>
+          <div class="absolute top-3 right-2 bg-red-700 text-white text-[9px] font-extrabold px-1.5 py-0.5 rounded tracking-widest" style="transform:rotate(18deg);">RECHAZADO</div>
+        </div>
+
+        <!-- set 2 (duplicado para bucle infinito) -->
+        <div class="relative bg-[#1a0f0f] rounded-2xl border border-red-900/50 p-5 flex flex-col items-center text-center shrink-0 overflow-hidden" style="width:180px;">
+          <div class="w-20 h-20 rounded-full overflow-hidden mb-3 border-2 border-red-900/50">
+            <img src="Captura de pantalla 2026-05-24 a las 11.51.44.png" class="w-full h-full object-cover" />
+          </div>
+          <p class="text-white font-bold text-sm mb-1">Ramón el Ruidoso</p>
+          <p class="text-white/40 text-[10px] italic leading-snug">Ladridos en tres continentes</p>
+          <div class="absolute top-3 right-2 bg-red-700 text-white text-[9px] font-extrabold px-1.5 py-0.5 rounded tracking-widest" style="transform:rotate(18deg);">RECHAZADO</div>
+        </div>
+
+        <div class="relative bg-[#1a0f0f] rounded-2xl border border-red-900/50 p-5 flex flex-col items-center text-center shrink-0 overflow-hidden" style="width:180px;">
+          <div class="w-20 h-20 rounded-full overflow-hidden mb-3 border-2 border-red-900/50">
+            <img src="Captura de pantalla 2026-05-24 a las 11.52.03.png" class="w-full h-full object-cover" />
+          </div>
+          <p class="text-white font-bold text-sm mb-1">Brutus Ladridos</p>
+          <p class="text-white/40 text-[10px] italic leading-snug">Especie incompatible con el método</p>
+          <div class="absolute top-3 right-2 bg-red-700 text-white text-[9px] font-extrabold px-1.5 py-0.5 rounded tracking-widest" style="transform:rotate(18deg);">RECHAZADO</div>
+        </div>
+
+        <div class="relative bg-[#1a0f0f] rounded-2xl border border-red-900/50 p-5 flex flex-col items-center text-center shrink-0 overflow-hidden" style="width:180px;">
+          <div class="w-20 h-20 rounded-full overflow-hidden mb-3 border-2 border-red-900/50">
+            <img src="Captura de pantalla 2026-05-24 a las 11.52.17.png" class="w-full h-full object-cover" />
+          </div>
+          <p class="text-white font-bold text-sm mb-1">Kevin de Chamberí</p>
+          <p class="text-white/40 text-[10px] italic leading-snug">Olor a perro en el formulario</p>
+          <div class="absolute top-3 right-2 bg-red-700 text-white text-[9px] font-extrabold px-1.5 py-0.5 rounded tracking-widest" style="transform:rotate(18deg);">RECHAZADO</div>
+        </div>
+
+        <div class="relative bg-[#1a0f0f] rounded-2xl border border-red-900/50 p-5 flex flex-col items-center text-center shrink-0 overflow-hidden" style="width:180px;">
+          <div class="w-20 h-20 rounded-full overflow-hidden mb-3 border-2 border-red-900/50">
+            <img src="Captura de pantalla 2026-05-24 a las 11.52.43.png" class="w-full h-full object-cover" />
+          </div>
+          <p class="text-white font-bold text-sm mb-1">Pepito Guauguau</p>
+          <p class="text-white/40 text-[10px] italic leading-snug">Se inscribió dos veces con distinto nombre</p>
+          <div class="absolute top-3 right-2 bg-red-700 text-white text-[9px] font-extrabold px-1.5 py-0.5 rounded tracking-widest" style="transform:rotate(18deg);">RECHAZADO</div>
+        </div>
+
+        <div class="relative bg-[#1a0f0f] rounded-2xl border border-red-900/50 p-5 flex flex-col items-center text-center shrink-0 overflow-hidden" style="width:180px;">
+          <div class="w-20 h-20 rounded-full overflow-hidden mb-3 border-2 border-red-900/50">
+            <img src="Captura de pantalla 2026-05-24 a las 11.52.54.png" class="w-full h-full object-cover" />
+          </div>
+          <p class="text-white font-bold text-sm mb-1">Lord Ladrón de Croquetas</p>
+          <p class="text-white/40 text-[10px] italic leading-snug">Robó croquetas durante la entrevista</p>
+          <div class="absolute top-3 right-2 bg-red-700 text-white text-[9px] font-extrabold px-1.5 py-0.5 rounded tracking-widest" style="transform:rotate(18deg);">RECHAZADO</div>
+        </div>
+
+        <div class="relative bg-[#1a0f0f] rounded-2xl border border-red-900/50 p-5 flex flex-col items-center text-center shrink-0 overflow-hidden" style="width:180px;">
+          <div class="w-20 h-20 rounded-full overflow-hidden mb-3 border-2 border-red-900/50">
+            <img src="Captura de pantalla 2026-05-24 a las 11.53.05.png" class="w-full h-full object-cover" />
+          </div>
+          <p class="text-white font-bold text-sm mb-1">El Peluchín Misterioso</p>
+          <p class="text-white/40 text-[10px] italic leading-snug">Evaluación: inapto para el silencio</p>
+          <div class="absolute top-3 right-2 bg-red-700 text-white text-[9px] font-extrabold px-1.5 py-0.5 rounded tracking-widest" style="transform:rotate(18deg);">RECHAZADO</div>
+        </div>
+
+        <div class="relative bg-[#1a0f0f] rounded-2xl border border-red-900/50 p-5 flex flex-col items-center text-center shrink-0 overflow-hidden" style="width:180px;">
+          <div class="w-20 h-20 rounded-full overflow-hidden mb-3 border-2 border-red-900/50">
+            <img src="Captura de pantalla 2026-05-24 a las 11.53.16.png" class="w-full h-full object-cover" />
+          </div>
+          <p class="text-white font-bold text-sm mb-1">Narciso de la Pata Izq.</p>
+          <p class="text-white/40 text-[10px] italic leading-snug">Destrozos sin estructura ni criterio</p>
+          <div class="absolute top-3 right-2 bg-red-700 text-white text-[9px] font-extrabold px-1.5 py-0.5 rounded tracking-widest" style="transform:rotate(18deg);">RECHAZADO</div>
+        </div>
+
+        <div class="relative bg-[#1a0f0f] rounded-2xl border border-red-900/50 p-5 flex flex-col items-center text-center shrink-0 overflow-hidden" style="width:180px;">
+          <div class="w-20 h-20 rounded-full overflow-hidden mb-3 border-2 border-red-900/50">
+            <img src="Captura de pantalla 2026-05-24 a las 11.53.26.png" class="w-full h-full object-cover" />
+          </div>
+          <p class="text-white font-bold text-sm mb-1">Wanda la Incontrolable</p>
+          <p class="text-white/40 text-[10px] italic leading-snug">Solicitó formación gratuita para perros</p>
+          <div class="absolute top-3 right-2 bg-red-700 text-white text-[9px] font-extrabold px-1.5 py-0.5 rounded tracking-widest" style="transform:rotate(18deg);">RECHAZADO</div>
+        </div>
+
+      </div>
     </div>
     <p class="text-center text-white/25 text-xs mt-8 italic">
       * Todos los solicitantes fueron informados de la decisión. Ninguno lo aceptó con dignidad.
