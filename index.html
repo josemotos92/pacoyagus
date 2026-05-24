@@ -79,7 +79,7 @@
 <!-- ===== HERO ===== -->
 <section class="relative overflow-hidden bg-[#2b1f1a] text-white min-h-screen flex items-center">
   <div class="absolute inset-0">
-    <video id="hero-video" autoplay loop muted playsinline preload="auto" class="w-full h-full object-cover object-[center_30%]">
+    <video id="hero-video" autoplay loop muted playsinline webkit-playsinline preload="auto" disablepictureinpicture class="w-full h-full object-cover object-[center_30%]" style="pointer-events:none;">
       <source src="hero.mp4" type="video/mp4" />
       <img src="IMG_1704.jpeg" alt="" class="w-full h-full object-cover object-[center_30%]" />
     </video>
@@ -396,8 +396,14 @@
 <script>
   const v = document.getElementById('hero-video');
   if (v) {
-    v.play().catch(() => {
-      document.addEventListener('touchstart', () => v.play(), { once: true });
+    v.muted = true;
+    const tryPlay = () => v.play().catch(() => {});
+    tryPlay();
+    v.addEventListener('canplay', tryPlay);
+    v.addEventListener('loadeddata', tryPlay);
+    document.addEventListener('touchstart', tryPlay, { once: true });
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden) tryPlay();
     });
   }
 </script>
