@@ -79,11 +79,11 @@
 <!-- ===== HERO ===== -->
 <section class="relative overflow-hidden bg-[#2b1f1a] text-white min-h-screen flex items-center">
   <div class="absolute inset-0">
-    <video autoplay loop muted playsinline class="w-full h-full object-cover object-[center_30%]">
+    <video id="hero-video" autoplay loop muted playsinline preload="auto" class="w-full h-full object-cover object-[center_30%]">
       <source src="hero.mp4" type="video/mp4" />
       <img src="IMG_1704.jpeg" alt="" class="w-full h-full object-cover object-[center_30%]" />
     </video>
-    <div class="absolute inset-0 bg-[#1c1411]/72"></div>
+    <div class="absolute inset-0 bg-[#1c1411]/80"></div>
   </div>
   <div class="relative max-w-7xl mx-auto px-6 pt-8 pb-20 z-10 w-full">
     <div class="flex flex-col items-center text-center">
@@ -392,6 +392,14 @@
       else{content.classList.add('open');content.style.maxHeight=content.scrollHeight+'px';if(icon)icon.textContent='–';}
     });
   });
+</script>
+<script>
+  const v = document.getElementById('hero-video');
+  if (v) {
+    v.play().catch(() => {
+      document.addEventListener('touchstart', () => v.play(), { once: true });
+    });
+  }
 </script>
 </body>
 </html>
